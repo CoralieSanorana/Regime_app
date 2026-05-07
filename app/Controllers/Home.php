@@ -101,7 +101,7 @@ class Home extends BaseController
             $userModel->update($user_id, ['mot_de_passe' => $new_password]);
             return redirect()->back()->with('success', 'Mot de passe mis à jour avec succès.');
         } else {
-            return redirect()->back()->with('error', 'Le nouveau mot de passe est identique à l\'ancien.');
+            return redirect()->back()->with('error', 'Error: Le nouveau mot de passe est identique à l\'ancien.');
         }
     }
 

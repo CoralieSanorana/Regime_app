@@ -32,6 +32,24 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
             .password-toggle:hover { color: var(--text); }
             .password-field input[type="password"],
             .password-field input[type="text"] { padding-right: 44px; }
+            .flash-message {
+                margin: 0 0 18px;
+                padding: 12px 16px;
+                border-radius: 12px;
+                font-size: 0.92rem;
+                font-weight: 600;
+                border: 1px solid transparent;
+            }
+            .flash-message.success {
+                background: rgba(74, 222, 128, 0.14);
+                color: #14532d;
+                border-color: rgba(74, 222, 128, 0.3);
+            }
+            .flash-message.error {
+                background: rgba(248, 113, 113, 0.14);
+                color: #7f1d1d;
+                border-color: rgba(248, 113, 113, 0.3);
+            }
         </style>
 </head>
 <body>
@@ -99,6 +117,13 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
                 <a href="/logout"><button class="btn btn-icon">🚪</button></a>
             </div>
         </div>
+
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="flash-message success"><?= esc(session()->getFlashdata('success')) ?></div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="flash-message error"><?= esc(session()->getFlashdata('error')) ?></div>
+        <?php endif; ?>
 
         <script>
             function togglePasswordVisibility(button) {
