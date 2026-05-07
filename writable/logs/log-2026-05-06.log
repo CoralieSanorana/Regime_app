@@ -1,0 +1,12 @@
+CRITICAL - 2026-05-06 17:10:33 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "sing_up.php"
+[Method: GET, Route: singUp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sing_up.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sing_up', [], true)
+ 3 APPPATH\Controllers\Home.php(11): view('sing_up')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->singUp()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

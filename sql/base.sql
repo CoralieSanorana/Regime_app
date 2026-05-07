@@ -73,3 +73,5 @@ CREATE TABLE porte_monnaie_transactions (
     date_transaction TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+ALTER TABLE users ADD adresse VARCHAR(250);

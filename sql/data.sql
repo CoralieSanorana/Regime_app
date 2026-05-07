@@ -4,11 +4,11 @@
 
 -- 5 Utilisateurs
 INSERT INTO users (nom, email, mot_de_passe, genre, role) VALUES 
-('Coralie', 'coralie@example.com', 'hash_mdp', 'F', 'user'),
-('Admin', 'admin@fit.mg', 'hash_admin', 'M', 'admin'),
-('Jean', 'jean@example.com', 'hash_mdp', 'M', 'user'),
-('Miora', 'miora@example.com', 'hash_mdp', 'F', 'user'),
-('Tahina', 'tahina@example.com', 'hash_mdp', 'M', 'user');
+('Coralie', 'coralie@example.com', '1234', 'F', 'user'),
+('Admin', 'admin@fit.mg', 'admin', 'M', 'admin'),
+('Jean', 'jean@example.com', '1234', 'M', 'user'),
+('Miora', 'miora@example.com', '1234', 'F', 'user'),
+('Tahina', 'tahina@example.com', '1234', 'M', 'user');
 
 -- 5 Régimes (Impact par jour)
 INSERT INTO regimes (nom_regime, pourcentage_viande, pourcentage_poisson, pourcentage_volaille, poids_impact_journalier, prix_journalier) VALUES 
