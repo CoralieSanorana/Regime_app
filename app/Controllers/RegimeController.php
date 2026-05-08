@@ -236,7 +236,7 @@ class RegimeController extends BaseController
         // Refresh les données de session de l'utilisateur
         $homeController->refreshSessionUserData($user_id);
 
-        return redirect()->back()->with('success', 'Régime acheté avec succès! Votre nouveau solde est de '.$nouveau_solde.' Ar.');
+        return redirect()->to('/monRegime')->with('success', 'Régime acheté avec succès! Votre nouveau solde est de '.$nouveau_solde.' Ar.');
     }
 
     public function suggestions(){
@@ -247,5 +247,39 @@ class RegimeController extends BaseController
         }
         $couples = $this->getRegimeUser($user_id, $poids_cible);
         return view('suggestions', ['couples' => $couples]);
+    }
+
+    public function monRegime(){
+        $regimeModel = new RegimeModel();
+        $sportModel = new SportModel();
+
+        $user_id = session()->get('user_id');
+        if (!$user_id) {
+            return redirect()->to('/login')->with('error', 'Veuillez vous connecter pour accéder à votre régime personnalisé.');
+        }
+
+        $achatModel = new AchatModel();
+        $derniereAchat = $achatModel->where('user_id', $user_id)->orderBy('date_achat', 'DESC')->first();
+
+        if (!$derniereAchat) {
+            return redirect()->to('/regimes')->with('succes', 'Vous n\'avez pas encore de régime en cours, veuillez voir les suggestions.');
+        }
+
+        $regime = $regimeModel->find($derniereAchat['regime_id']);
+        $sport = $sportModel->find($derniereAchat['sport_id']);
+        $duree_restante = max(0, $derniereAchat['duree_jours'] - ((time() - strtotime($derniereAchat['date_achat'])) / (60 * 60 * 24)));
+        $temps_ecoule = (time() - strtotime($derniereAchat['date_achat'])) / (60 * 60 * 24);
+        $poids_estime = $derniereAchat['poids_depart'] + ($regime['poids_impact_journalier'] + $sport['poids_impact_journalier']) * $temps_ecoule;
+        $date_fin = date('Y-m-d', strtotime($derniereAchat['date_achat'] . ' + ' . $derniereAchat['duree_jours'] . ' days'));
+        $monRegime = [
+            'achat' => $derniereAchat,
+            'regime' => $regime,
+            'sport' => $sport,
+            'poids_estime' => $poids_estime,
+            'duree_restante' => round($duree_restante, 2),
+            'date_fin' => $date_fin
+        ];
+
+        return view('mon_regime', ['monRegime' => $monRegime]);
     }
 }
