@@ -29,6 +29,7 @@ $routes->post('/regimes/add', 'RegimeController::addRegime');
 $routes->get('/regimes/edit/(:num)', 'RegimeController::editRegime/$1');
 $routes->post('/regimes/update/(:num)', 'RegimeController::updateRegime/$1');
 $routes->get('/regimes/delete/(:num)', 'RegimeController::deleteRegime/$1');
+$routes->post('/regimes/achat', 'RegimeController::acheterRegime');
 
 // sports
 $routes->get('/sports', 'Sport::index');

@@ -40,6 +40,10 @@ class RegimeController extends BaseController
         return redirect()->to('/regimes')->with('succes','Nouveau régime ajouté avec succès.');
     }
 
+    public function addForm(){
+        return view('regimes/form');
+    }
+
     public function deleteRegime($id){
         $regimeModel = new RegimeModel();
         $regimeModel->delete($id);
@@ -85,18 +89,18 @@ class RegimeController extends BaseController
         $userDetailsModel = new UserDetailsModel();
         $sportModel = new SportModel();
 
+         if (!$user_id || !$poids_cible) {
+            return redirect()->back()->with('error', 'ID utilisateur ou poids cible manquant.');
+        }
+
         $user = $userModel->find($user_id);
         if (!$user) {
-            return $this->response->setStatusCode(404)->setJSON([
-                'error' => 'Utilisateur introuvable.'
-            ]);
+            return redirect()->back()->with('error', 'Utilisateur introuvable.');
         }
 
         $userDetails = $userDetailsModel->where('user_id', $user_id)->first();
         if (!$userDetails || !isset($userDetails['poids_actuel'])) {
-            return $this->response->setStatusCode(404)->setJSON([
-                'error' => 'Les détails du poids actuel sont introuvables pour cet utilisateur.'
-            ]);
+            return redirect()->back()->with('error', 'Les détails du poids actuel sont introuvables pour cet utilisateur.');
         }
 
         $poids_actuel = (float) $userDetails['poids_actuel'];
@@ -175,18 +179,19 @@ class RegimeController extends BaseController
 
     }
 
-    public function acheterRegime($user_id, $couple){
+    public function acheterRegime(){
         $regimeModel = new RegimeModel();
         $sportModel = new SportModel();
         $userModel = new UsersModel();
         $transactionModel = new TransactionModel();
         $homeController = new Home();
 
-        $regime_id = $couple['regime']['id'] ?? null;
-        $sport_id = $couple['sport']['id'] ?? null;
-        $duree_jours = $couple['duree_jours'] ?? null;
-        $prix_total = $couple['prix_total'] ?? null;
-        $poids_cible = $couple['poids_cible'] ?? null;
+        $user_id = $this->request->getPost('user_id');
+        $regime_id = $this->request->getPost('regime_id');
+        $sport_id = $this->request->getPost('sport_id');
+        $duree_jours = $this->request->getPost('duree_jours');
+        $prix_total = $this->request->getPost('prix_total');
+        $poids_cible = $this->request->getPost('poids_cible');
 
          if (!$regime_id || !$sport_id || !$duree_jours || !$prix_total || !$poids_cible) {
             return redirect()->back()->with('error', 'Données du couple régime-sport invalides ou incomplètes.');
@@ -234,7 +239,13 @@ class RegimeController extends BaseController
         return redirect()->back()->with('success', 'Régime acheté avec succès! Votre nouveau solde est de '.$nouveau_solde.' Ar.');
     }
 
-    public function addForm(){
-        return view('regime_form');
+    public function suggestions(){
+        $user_id = $this->request->getPost('user_id');
+        $poids_cible = $this->request->getPost('poids_cible');
+        if (!$user_id || !$poids_cible) {
+            return redirect()->back()->with('error', 'ID utilisateur ou poids cible manquant.');
+        }
+        $couples = $this->getRegimeUser($user_id, $poids_cible);
+        return view('suggestions', ['couples' => $couples]);
     }
 }
