@@ -108,3 +108,17 @@ in APPPATH\Views\sports.php on line 35.
  9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-08 16:57:50 --> ErrorException: Undefined array key "pourcentage"
+[Method: GET, Route: codes]
+in APPPATH\Views\codes.php on line 27.
+ 1 APPPATH\Views\codes.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pourcentage"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\codes.php', 27)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\codes.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('codes', [], true)
+ 5 APPPATH\Controllers\Code.php(10): view('codes', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Code->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Code))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
