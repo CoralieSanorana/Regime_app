@@ -88,7 +88,7 @@ class Home extends BaseController
             'taille' => isset($user_details['taille']) ? $user_details['taille'] : 0
         ];
 
-        return view('profil', ['profil' => $profil]);
+        return view('users/profil', ['profil' => $profil]);
     }
 
     public function updatePwd(){

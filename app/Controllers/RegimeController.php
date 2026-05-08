@@ -246,7 +246,7 @@ class RegimeController extends BaseController
             return redirect()->back()->with('error', 'ID utilisateur ou poids cible manquant.');
         }
         $couples = $this->getRegimeUser($user_id, $poids_cible);
-        return view('suggestions', ['couples' => $couples]);
+        return view('regimes/suggestions', ['couples' => $couples]);
     }
 
     public function monRegime(){
@@ -262,7 +262,7 @@ class RegimeController extends BaseController
         $derniereAchat = $achatModel->where('user_id', $user_id)->orderBy('date_achat', 'DESC')->first();
 
         if (!$derniereAchat) {
-            return redirect()->to('/regimes')->with('succes', 'Vous n\'avez pas encore de régime en cours, veuillez voir les suggestions.');
+            return redirect()->to('/regimes')->with('success', 'Vous n\'avez pas encore de régime en cours, veuillez voir les suggestions.');
         }
 
         $regime = $regimeModel->find($derniereAchat['regime_id']);
@@ -280,6 +280,6 @@ class RegimeController extends BaseController
             'date_fin' => $date_fin
         ];
 
-        return view('mon_regime', ['monRegime' => $monRegime]);
+        return view('regimes/mon_regime', ['monRegime' => $monRegime]);
     }
 }

@@ -126,7 +126,9 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
                 <div class="wallet-badge" onclick="navigate('wallet', null)">
                 💰 <span class="amount"><?= esc((string) $userSolde) ?></span>
                 </div>
-                <div class="gold-badge">⭐ GOLD</div>
+                <?php if ($session->get('user_gold')): ?>
+                    <div class="gold-badge">⭐ GOLD</div>
+                <?php endif; ?>
                 <a href="/logout"><button class="btn btn-icon">🚪</button></a>
             </div>
         </div>

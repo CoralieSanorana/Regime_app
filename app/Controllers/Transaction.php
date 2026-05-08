@@ -45,7 +45,7 @@ class Transaction extends BaseController
 
         $data['transactions'] = $formattedTransactions;
         $data['userSolde'] = $user['solde_monnaie'] ?? 0;
-        return view('porte_monnaie', $data);
+        return view('porte_monnaie/index', $data);
     }
 
     public function recharger(){
