@@ -2,8 +2,9 @@
     <div class="page active" id="pg-codes">
         <div class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>Codes de recharge</h2>
-                <a href="/codes/add" class="btn btn-primary">Ajouter un code de recharge</a>
+                <h2>Codes de recharge
+                    <a href="/codes/add" class="btn btn-primary">Ajouter un code</a>
+                </h2>
             </div>
             <?php if (session()->getFlashdata('succes')): ?>
                 <div class="alert alert-success"><?= session()->getFlashdata('succes') ?></div>

@@ -2,10 +2,13 @@
     <div class="page active" id="pg-regimes">
         <div class="container mt-5">
             <div class="card">
-                <div class="card-title">Liste des régimes</div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2>Liste des régimes
+                        <a href="/regimes/add" class="btn btn-primary">Ajouter un régime</a>
+                    </h2>
+                </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <a href="/regimes/add" class="btn btn-primary">Ajouter un régime</a>
                         <div>
                             <?php if (session()->getFlashdata('succes')): ?>
                                 <div class="alert alert-success mb-0">

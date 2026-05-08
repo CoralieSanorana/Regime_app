@@ -92,6 +92,19 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
         </a>
         </div>
 
+        <div class="nav-section">
+        <div class="nav-label">Paramètres</div>
+        <a class="nav-item <?php echo ($activeMenu === 'regimes') ? 'active' : ''; ?>" href="/regimes">
+            <div class="icon">🥗</div> Régimes
+        </a>
+        <a class="nav-item <?php echo ($activeMenu === 'sports') ? 'active' : ''; ?>" href="/sports">
+            <div class="icon">⚽</div> Sports
+        </a>
+        <a class="nav-item <?php echo ($activeMenu === 'codes') ? 'active' : ''; ?>" href="/codes">
+            <div class="icon">🏷️</div> Codes Promo
+        </a>
+        </div>
+
         <div class="sidebar-footer">
         <div class="user-card">
             <div class="avatar"><?= $initials ?: 'U' ?></div>

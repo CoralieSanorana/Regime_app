@@ -7,11 +7,11 @@ class Sport extends BaseController
     {
         $model = new SportModel();
         $data['sports'] = $model->findAll();
-        return view('sports', $data);
+        return view('sports/index', $data);
     }
 
     public function add()
-    {return view('sport_form');}
+    {return view('sports/form');}
 
     public function addSport()
     {
@@ -29,7 +29,7 @@ class Sport extends BaseController
     {
         $model = new SportModel();
         $data['sport'] = $model->find($id);
-        return view('sport_form', ['sport' => $data['sport'], 'isEdit' => true]);
+        return view('sports/form', ['sport' => $data['sport'], 'isEdit' => true]);
     }
 
     public function updateSport($id)

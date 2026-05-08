@@ -13,7 +13,7 @@ class RegimeController extends BaseController
         $model = new RegimeModel();
         $data['regimes'] = $model->findAll();
         
-        return view('regimes', $data);
+        return view('regimes/index', $data);
     }
 
     public function addRegime(){
@@ -52,7 +52,7 @@ class RegimeController extends BaseController
         if (!$regime) {
             return redirect()->to('/regimes')->with('error', 'Régime introuvable.');
         }
-        return view('regime_form', ['regime' => $regime]);
+        return view('regimes/form', ['regime' => $regime]);
     }
 
     public function updateRegime($id){

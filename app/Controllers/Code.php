@@ -7,11 +7,11 @@ class Code extends BaseController
     {
         $model = new CodeModel();
         $data['codes'] = $model->findAll();
-        return view('codes', $data);
+        return view('codes/index', $data);
     }
 
     public function add()
-    {return view('code_form');}
+    {return view('codes/form');}
 
     public function addCode()
     {
@@ -29,7 +29,7 @@ class Code extends BaseController
     {
         $model = new CodeModel();
         $data['code'] = $model->find($id);
-        return view('code_form', ['code' => $data['code'], 'isEdit' => true]);
+        return view('codes/form', ['code' => $data['code'], 'isEdit' => true]);
     }
 
     public function updateCode($id)

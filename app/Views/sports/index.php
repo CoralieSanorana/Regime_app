@@ -2,23 +2,26 @@
         <div class="page active" id="pg-sports">
             <div class="container mt-5">
                 <div class="card">
-                    <div class="card-title">Liste des sports</div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2>Liste des sports
+                            <a href="/sports/add" class="btn btn-primary">Ajouter un sport</a>
+                        </h2>
+                    </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="/sports/add" class="btn btn-primary">Ajouter un sport</a>
-            <div>
-                <?php if (session()->getFlashdata('succes')): ?>
-                    <div class="alert alert-success mb-0">
-                        <?= session()->getFlashdata('succes') ?>
-                    </div>
-                <?php endif; ?>
-                <?php if (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger mb-0">
-                        <?= session()->getFlashdata('error') ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
+                            <div>
+                                <?php if (session()->getFlashdata('succes')): ?>
+                                    <div class="alert alert-success mb-0">
+                                        <?= session()->getFlashdata('succes') ?>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if (session()->getFlashdata('error')): ?>
+                                    <div class="alert alert-danger mb-0">
+                                        <?= session()->getFlashdata('error') ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>
