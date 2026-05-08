@@ -1,0 +1,110 @@
+CRITICAL - 2026-05-08 16:16:30 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "sports/index.php"
+[Method: GET, Route: sports]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('sports/index.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sports/index', [], true)
+ 3 APPPATH\Controllers\Sport.php(10): view('sports/index', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sport->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sport))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-08 16:17:09 --> ErrorException: Undefined array key "nom_sport"
+[Method: GET, Route: sports]
+in APPPATH\Views\sports.php on line 33.
+ 1 APPPATH\Views\sports.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nom_sport"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php', 33)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sports', [], true)
+ 5 APPPATH\Controllers\Sport.php(10): view('sports', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sport))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-08 16:17:12 --> ErrorException: Undefined array key "nom_sport"
+[Method: GET, Route: sports]
+in APPPATH\Views\sports.php on line 33.
+ 1 APPPATH\Views\sports.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nom_sport"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php', 33)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sports', [], true)
+ 5 APPPATH\Controllers\Sport.php(10): view('sports', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sport))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-08 16:20:01 --> ErrorException: Undefined array key "nom_sport"
+[Method: GET, Route: sports]
+in APPPATH\Views\sports.php on line 33.
+ 1 APPPATH\Views\sports.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nom_sport"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php', 33)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sports', [], true)
+ 5 APPPATH\Controllers\Sport.php(10): view('sports', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sport))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-08 16:21:32 --> ErrorException: Undefined array key "nom_sport"
+[Method: GET, Route: sports]
+in APPPATH\Views\sports.php on line 33.
+ 1 APPPATH\Views\sports.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nom_sport"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php', 33)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sports', [], true)
+ 5 APPPATH\Controllers\Sport.php(10): view('sports', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sport))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-08 16:21:54 --> ErrorException: Undefined array key "nom_sport"
+[Method: GET, Route: sports]
+in APPPATH\Views\sports.php on line 33.
+ 1 APPPATH\Views\sports.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nom_sport"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php', 33)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sports', [], true)
+ 5 APPPATH\Controllers\Sport.php(10): view('sports', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sport))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-08 16:21:55 --> ErrorException: Undefined array key "nom_sport"
+[Method: GET, Route: sports]
+in APPPATH\Views\sports.php on line 33.
+ 1 APPPATH\Views\sports.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nom_sport"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php', 33)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sports', [], true)
+ 5 APPPATH\Controllers\Sport.php(10): view('sports', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sport))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-08 16:24:05 --> ErrorException: Undefined array key "nom_sport"
+[Method: GET, Route: sports]
+in APPPATH\Views\sports.php on line 35.
+ 1 APPPATH\Views\sports.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nom_sport"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php', 35)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\sports.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sports', [], true)
+ 5 APPPATH\Controllers\Sport.php(10): view('sports', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sport))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

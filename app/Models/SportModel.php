@@ -4,5 +4,5 @@ use CodeIgniter\Model;
 class SportModel extends Model
 {
  protected $table = 'activites_sportives';
- protected $allowedFields = ['nom_activite', 'description'];
+ protected $allowedFields = ['nom_activite', 'description', 'effet_jour'];
 }
