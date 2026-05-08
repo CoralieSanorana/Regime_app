@@ -45,7 +45,7 @@
                         <td><?= $regime['poids_impact_journalier'] ?></td>
                         <td><?= $regime['prix_journalier'] ?></td>
                         <td>
-                            <a href="/regimes/edit/<?= $regime['id'] ?>" class="btn btn-warning btn-sm"><img src="<?= base_url('/assets/images/edit.png') ?>" alt="Modifier" width="20" height="20"></a>
+                            <a href="/regimes/edit/<?= $regime['id'] ?>" class="btn btn-warning btn-sm"><img src="<?= base_url('/assets/images/editer.png') ?>" alt="Modifier" width="20" height="20"></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
