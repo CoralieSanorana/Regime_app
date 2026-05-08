@@ -127,11 +127,7 @@ class Home extends BaseController
             'genre' => $genre
         ]);
 
-        $session->set([
-            'user_nom' => $nom,
-            'user_prenom' => $prenom,
-            'user_email' => $email,
-        ]);
+        $this->freshUser($user_id);
         return redirect()->back()->with('success', 'Profil mis à jour avec succès.');
     }
 
@@ -146,14 +142,32 @@ class Home extends BaseController
         $taille = $this->request->getPost('taille');
         $genre = $this->request->getPost('genre');
 
-        // Update user details
-        $userDetailsModel->update($details_id, [
-            'poids_actuel' => $poids_actuel,
-            'taille' => $taille
-        ]);
-        $userModel->update($user_id, [
-            'genre' => $genre
-        ]);
+        if($details_id){
+            $userDetailsModel->update($details_id, [
+                'poids_actuel' => $poids_actuel,
+                'taille' => $taille
+            ]);
+            $userModel->update($user_id, [
+                'genre' => $genre
+            ]);
+        } else {
+            $userDetailsModel->insert([
+                'user_id' => $user_id,
+                'poids_actuel' => $poids_actuel,
+                'taille' => $taille
+            ]);
+            $userModel->update($user_id, [
+                'genre' => $genre
+            ]);
+        }
+
+        $this->freshUser($user_id);
+        return redirect()->back()->with('success', 'Détails du profil mis à jour avec succès.');
+    }
+
+    public function freshUser($user_id){
+        $userModel = new UsersModel();
+        $session = session();
 
         $freshUser = $userModel->find($user_id);
         if ($freshUser) {
@@ -167,8 +181,34 @@ class Home extends BaseController
                 'user_gold' => $freshUser['is_gold'],
             ]);
         }
-        return redirect()->back()->with('success', 'Détails du profil mis à jour avec succès.');
     }
 
+    public function inscription(){
+        $userModel = new UsersModel();
 
+        $nom = $this->request->getPost('nom');
+        $prenom = $this->request->getPost('prenom');
+        $genre = $this->request->getPost('genre');
+        $email = $this->request->getPost('email');
+        $adresse = $this->request->getPost('adresse');
+        $date_naissance = $this->request->getPost('date_naissance');
+        $mot_de_passe = $this->request->getPost('password');
+        $confirme_pwd = $this->request->getPost('confirme_password');
+
+        if ($mot_de_passe !== $confirme_pwd) {
+            return redirect()->back()->with('error', 'Le mot de passe et la confirmation ne correspondent pas.');
+        }
+
+        $userModel->insert([
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'adresse' => $adresse,
+            'mot_de_passe' => $mot_de_passe,
+            'date_naissance' => $date_naissance,
+            'genre' => $genre
+        ]);
+
+        return redirect()->to('/')->with('success', 'Inscription réussie.');
+    }
 }

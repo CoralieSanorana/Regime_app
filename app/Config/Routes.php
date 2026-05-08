@@ -10,6 +10,8 @@ $routes->get('/singUp', 'Home::singUp');
 $routes->get('/logout', 'Home::logout');
 
 $routes->post('/singIn', 'Home::login');
+$routes->post('/singUp', 'Home::inscription');
+
 
 $routes->get('/profil/(:num)', 'Home::profil/$1');
 $routes->post('/user/update','Home::updateUser');

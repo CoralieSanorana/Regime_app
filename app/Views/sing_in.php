@@ -81,11 +81,11 @@
             <form action="/singIn" method="post">
                 <div class="form-group">
                     <label>Adresse Email</label>
-                    <input type="email" name="email" placeholder="exemple@gmail.com" required >
+                    <input type="email" name="email" placeholder="exemple@gmail.com" value="user@example.com" required >
                 </div>
                 <div class="form-group password-field">
                     <label>Mot de passe</label>
-                    <input type="password" name="mot_de_passe" placeholder="••••••••" required autocomplete="current-password">
+                    <input type="password" name="mot_de_passe" placeholder="••••••••" value="user" required autocomplete="current-password">
                     <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)" aria-label="Afficher le mot de passe">👁️</button>
                 </div>
     

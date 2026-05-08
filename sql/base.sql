@@ -75,3 +75,5 @@ CREATE TABLE porte_monnaie_transactions (
 );
 
 ALTER TABLE users ADD adresse VARCHAR(250);
+
+ALTER TABLE activites_sportives ADD effet_jour DECIMAL(10,2) ;
