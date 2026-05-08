@@ -19,3 +19,9 @@ $routes->post('/userDetails/update','Home::updateUserDetails');
 $routes->get('/porte_monnaie/(:num)', 'Transaction::findOne/$1');
 $routes->post('/porte_monnaie/recharger','Transaction::recharger');
 $routes->post('/porte_monnaie/rechager','Transaction::recharger');
+
+$routes->get('/regimes', 'RegimeController::index');
+$routes->get('/regimes/add', 'RegimeController::addForm');
+$routes->post('/regimes/add', 'RegimeController::addRegime');
+$routes->get('/regimes/edit/(:num)', 'RegimeController::editRegime/$1');
+$routes->post('/regimes/update/(:num)', 'RegimeController::updateRegime/$1');

@@ -13,7 +13,7 @@ class RegimeController extends BaseController
         $model = new RegimeModel();
         $data['regimes'] = $model->findAll();
         
-        return view('regimes/index', $data);
+        return view('regimes', $data);
     }
 
     public function addRegime(){
@@ -24,7 +24,7 @@ class RegimeController extends BaseController
         $viande = $this->request->getPost('viande');
         $volaille = $this->request->getPost('volaille');
         $poisson = $this->request->getPost('poisson');
-        $poids_impact = $this->request->getPost('poids_impact');
+        $poids_impact = $this->request->getPost('poids_impact_journalier');
         $prix_journalier = $this->request->getPost('prix_journalier');
 
         $regimeModel->insert([
@@ -52,7 +52,7 @@ class RegimeController extends BaseController
         if (!$regime) {
             return redirect()->to('/regimes')->with('error', 'Régime introuvable.');
         }
-        return view('regimes/edit', ['regime' => $regime]);
+        return view('regime_form', ['regime' => $regime]);
     }
 
     public function updateRegime($id){
@@ -63,7 +63,7 @@ class RegimeController extends BaseController
         $viande = $this->request->getPost('viande');
         $volaille = $this->request->getPost('volaille');
         $poisson = $this->request->getPost('poisson');
-        $poids_impact = $this->request->getPost('poids_impact');
+        $poids_impact = $this->request->getPost('poids_impact_journalier');
         $prix_journalier = $this->request->getPost('prix_journalier');
 
         $regimeModel->update($id, [
@@ -232,5 +232,9 @@ class RegimeController extends BaseController
         $homeController->refreshSessionUserData($user_id);
 
         return redirect()->back()->with('success', 'Régime acheté avec succès! Votre nouveau solde est de '.$nouveau_solde.' Ar.');
+    }
+
+    public function addForm(){
+        return view('regime_form');
     }
 }
