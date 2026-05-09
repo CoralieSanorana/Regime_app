@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Models\RegimeModel;
 use App\Models\SportModel;
+use App\Models\AchatModel;
 use App\Models\UserDetailsModel;
 use App\Models\UsersModel;
 
@@ -39,6 +40,7 @@ class RegimeController extends BaseController
 
         return redirect()->to('/regimes')->with('succes','Nouveau régime ajouté avec succès.');
     }
+
 
     public function addForm(){
         return view('regimes/form');
@@ -205,6 +207,16 @@ class RegimeController extends BaseController
             return redirect()->back()->with('error', 'Régime, sport ou utilisateur introuvable.');
         }
 
+        // Verifier que le user n'a pas déjà un régime en cours
+        $derniereAchat = $this->getDerniereAchat($user_id);
+        if ($derniereAchat) {
+            $dateFinAchat = strtotime($derniereAchat['date_achat'] . ' + ' . $derniereAchat['duree_jours'] . ' days');
+            if ($dateFinAchat > time()) {
+                return redirect()->back()->with('error', 'Vous avez déjà un régime en cours. Veuillez attendre la fin de votre programme actuel avant d\'en acheter un nouveau.');
+            }
+        }
+
+        // Verifier que l'utilisateur a suffisamment de solde pour acheter le régime
         if ($user['solde_monnaie'] < $prix_total) {
             return redirect()->back()->with('error', 'Solde insuffisant pour acheter ce régime.');
         }
@@ -249,19 +261,19 @@ class RegimeController extends BaseController
         return view('regimes/suggestions', ['couples' => $couples]);
     }
 
-    public function monRegime(){
+    public function monRegime($user_id){
         $regimeModel = new RegimeModel();
         $sportModel = new SportModel();
 
-        $user_id = session()->get('user_id');
         if (!$user_id) {
             return redirect()->to('/login')->with('error', 'Veuillez vous connecter pour accéder à votre régime personnalisé.');
         }
 
         $achatModel = new AchatModel();
-        $derniereAchat = $achatModel->where('user_id', $user_id)->orderBy('date_achat', 'DESC')->first();
+        $derniereAchat = $this->getDerniereAchat($user_id);
 
         if (!$derniereAchat) {
+            return view('regimes/mon_regime', ['monRegime' => null]);
             return redirect()->to('/regimes')->with('success', 'Vous n\'avez pas encore de régime en cours, veuillez voir les suggestions.');
         }
 
@@ -281,5 +293,11 @@ class RegimeController extends BaseController
         ];
 
         return view('regimes/mon_regime', ['monRegime' => $monRegime]);
+    }
+
+    public function getDerniereAchat($user_id){
+        $achatModel = new AchatModel();
+        $derniereAchat = $achatModel->where('user_id', $user_id)->orderBy('date_achat', 'DESC')->first();
+        return $derniereAchat;
     }
 }

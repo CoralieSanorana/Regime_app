@@ -132,10 +132,6 @@
             }
         }
 
-        function showLogout() {
-            window.location.href = '/singIn';
-        }
-
         function calculerIMC() {
             // Récupérer les valeurs des champs
             const poids = parseFloat(document.getElementById('poids-input').value);

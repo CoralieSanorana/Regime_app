@@ -1,0 +1,18 @@
+CRITICAL - 2026-05-09 14:10:01 --> Error: Class "App\Controllers\AchatModel" not found
+[Method: GET, Route: monRegime/2]
+in APPPATH\Controllers\RegimeController.php on line 260.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegimeController->monRegime('2')
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegimeController))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-09 14:11:40 --> Error: Class "App\Controllers\AchatModel" not found
+[Method: GET, Route: monRegime/2]
+in APPPATH\Controllers\RegimeController.php on line 260.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegimeController->monRegime('2')
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegimeController))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

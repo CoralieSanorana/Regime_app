@@ -30,6 +30,10 @@ class Home extends BaseController
                 'user_gold' => $user['is_gold']
             ]);
 
+            if (($user['role'] ?? 'user') === 'admin') {
+                return redirect()->to('/dashboard');
+            }
+
             return redirect()->to('/profil/'.$user['id']);
         } else {
             return redirect()->to('/')->with('error', 'Email ou mot de passe incorrect.');
@@ -210,5 +214,191 @@ class Home extends BaseController
         ]);
 
         return redirect()->to('/')->with('success', 'Inscription réussie.');
+    }
+
+    public function objectif($user_id){
+        $userModel = new UsersModel();
+        $userDetailsModel = new UserDetailsModel();
+        $user = $userModel->find($user_id);
+
+        if (!$user) {
+            return redirect()->to('/')->with('error', 'Utilisateur introuvable.');
+        }
+
+        $session = session();
+        $session->set([
+            'user_id' => $user['id'],
+            'user_role' => $user['role'],
+            'user_nom' => $user['nom'],
+            'user_prenom' => $user['prenom'],
+            'user_email' => $user['email'],
+            'user_solde' => $user['solde_monnaie'],
+            'user_gold' => $user['is_gold'],
+        ]);
+
+        $userDetails = $userDetailsModel->where('user_id', $user_id)->first();
+        $currentWeight = $userDetails['poids_actuel'] ?? null;
+
+        return view('objectif', [
+            'user' => $user,
+            'currentWeight' => $currentWeight,
+        ]);
+    }
+
+    public function gold($user_id){
+        $userModel = new UsersModel();
+        $user = $userModel->find($user_id);
+
+        if (!$user) {
+            return redirect()->to('/')->with('error', 'Utilisateur introuvable.');
+        }
+
+        $session = session();
+        $session->set([
+            'user_id' => $user['id'],
+            'user_role' => $user['role'],
+            'user_nom' => $user['nom'],
+            'user_prenom' => $user['prenom'],
+            'user_email' => $user['email'],
+            'user_solde' => $user['solde_monnaie'],
+            'user_gold' => $user['is_gold'],
+        ]);
+
+        return view('gold', [
+            'user' => $user,
+        ]);
+    }
+
+    public function dashboard(){
+        $session = session();
+        $userId = $session->get('user_id');
+        $userRole = $session->get('user_role');
+
+        if ($userRole !== 'admin') {
+            if ($userId) {
+                return redirect()->to('/profil/' . $userId);
+            }
+
+            return redirect()->to('/')->with('error', 'Accès réservé aux administrateurs.');
+        }
+
+        $db = db_connect();
+
+        $currentUser = null;
+        if ($userId) {
+            $currentUser = (new UsersModel())->find($userId);
+        }
+
+        $totalUsers = (int) $db->table('users')->countAllResults();
+        $goldUsers = (int) $db->table('users')->where('is_gold', 1)->countAllResults();
+
+        $walletRow = $db->table('users')
+            ->selectSum('solde_monnaie', 'total_solde')
+            ->get()
+            ->getRowArray();
+        $totalWallet = (float) ($walletRow['total_solde'] ?? 0);
+
+        $objectiveCounts = [
+            'reduce' => 0,
+            'increase' => 0,
+            'ideal' => 0,
+        ];
+
+        $achats = $db->table('achats_programmes')
+            ->select('poids_depart, poids_objectif')
+            ->get()
+            ->getResultArray();
+
+        foreach ($achats as $achat) {
+            $poidsDepart = (float) ($achat['poids_depart'] ?? 0);
+            $poidsObjectif = (float) ($achat['poids_objectif'] ?? 0);
+
+            if ($poidsObjectif < $poidsDepart) {
+                $objectiveCounts['reduce']++;
+            } elseif ($poidsObjectif > $poidsDepart) {
+                $objectiveCounts['increase']++;
+            } else {
+                $objectiveCounts['ideal']++;
+            }
+        }
+
+        $objectiveChart = [
+            ['label' => 'Réduire le poids', 'value' => $objectiveCounts['reduce'], 'color' => '#4ade80'],
+            ['label' => 'Augmenter le poids', 'value' => $objectiveCounts['increase'], 'color' => '#60a5fa'],
+            ['label' => 'IMC idéal', 'value' => $objectiveCounts['ideal'], 'color' => '#f59e0b'],
+        ];
+
+        $pieSegments = [];
+        $pieOffset = 0;
+        $objectiveTotal = array_sum(array_column($objectiveChart, 'value'));
+        foreach ($objectiveChart as $item) {
+            if ($objectiveTotal <= 0 || $item['value'] <= 0) {
+                continue;
+            }
+
+            $segment = ($item['value'] / $objectiveTotal) * 100;
+            $pieSegments[] = $item['color'] . ' ' . number_format($pieOffset, 2, '.', '') . '% ' . number_format($pieOffset + $segment, 2, '.', '') . '%';
+            $pieOffset += $segment;
+        }
+
+        $pieBackground = $pieSegments
+            ? 'conic-gradient(' . implode(', ', $pieSegments) . ')'
+            : 'conic-gradient(#e5e7eb 0% 100%)';
+
+        $popularRegimes = $db->table('achats_programmes ap')
+            ->select('ap.regime_id, r.nom_regime, COUNT(*) AS total_achats')
+            ->join('regimes r', 'r.id = ap.regime_id', 'left')
+            ->groupBy('ap.regime_id, r.nom_regime')
+            ->orderBy('total_achats', 'DESC')
+            ->limit(6)
+            ->get()
+            ->getResultArray();
+
+        $maxRegimeCount = 0;
+        foreach ($popularRegimes as $regime) {
+            $maxRegimeCount = max($maxRegimeCount, (int) ($regime['total_achats'] ?? 0));
+        }
+
+        foreach ($popularRegimes as &$regime) {
+            $count = (int) ($regime['total_achats'] ?? 0);
+            $regime['bar_height'] = $maxRegimeCount > 0 ? round(($count / $maxRegimeCount) * 100) : 0;
+            $regime['total_achats'] = $count;
+        }
+        unset($regime);
+
+        $rechargeTransactions = $db->table('porte_monnaie_transactions t')
+            ->select('t.id, t.user_id, t.montant, t.description, t.date_transaction, u.nom, u.prenom')
+            ->join('users u', 'u.id = t.user_id', 'left')
+            ->like('t.description', 'Recharge via code', 'after')
+            ->orderBy('t.date_transaction', 'DESC')
+            ->limit(8)
+            ->get()
+            ->getResultArray();
+
+        foreach ($rechargeTransactions as &$transaction) {
+            $code = 'Code non enregistré';
+            if (!empty($transaction['description']) && preg_match('/Recharge via code[:\s-]*(.+)$/i', $transaction['description'], $matches)) {
+                $code = trim($matches[1]);
+            }
+
+            $transaction['code'] = $code;
+            $transaction['user_name'] = trim(($transaction['prenom'] ?? '') . ' ' . ($transaction['nom'] ?? ''));
+            $transaction['montant_formatted'] = number_format((float) ($transaction['montant'] ?? 0), 0, ',', ' ');
+            $transaction['date_formatted'] = !empty($transaction['date_transaction']) ? date('d/m/Y H:i', strtotime($transaction['date_transaction'])) : '-';
+        }
+        unset($transaction);
+
+        return view('dashboard', [
+            'currentUser' => $currentUser,
+            'totalUsers' => $totalUsers,
+            'goldUsers' => $goldUsers,
+            'totalWallet' => $totalWallet,
+            'objectiveChart' => $objectiveChart,
+            'objectiveCounts' => $objectiveCounts,
+            'objectiveTotal' => $objectiveTotal,
+            'pieBackground' => $pieBackground,
+            'popularRegimes' => $popularRegimes,
+            'rechargeTransactions' => $rechargeTransactions,
+        ]);
     }
 }

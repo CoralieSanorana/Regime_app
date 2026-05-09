@@ -5,6 +5,7 @@ $userNom = $session->get('user_nom') ?: 'Utilisateur';
 $userPrenom = $session->get('user_prenom') ?: '';
 $userEmail = $session->get('user_email') ?: 'example@example.com';
 $userSolde = $session->get('user_solde') ?: 0;
+$userRole = $session->get('user_role') ?: 'user';
 $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 0, 1));
 ?>
 <!DOCTYPE html>
@@ -59,41 +60,12 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
     <aside class="sidebar">
         <div class="brand"><div class="brand-icon">🌿</div> NutriPath</div>
 
+        <?php if ($userRole === 'admin'): ?>
         <div class="nav-section">
-        <div class="nav-label">Principal</div>
-        <a class="nav-item <?php echo ($activeMenu === 'dashboard') ? 'active' : ''; ?>" onclick="navigate('dashboard', this)">
+        <div class="nav-label">Administration</div>
+        <a class="nav-item <?php echo ($activeMenu === 'dashboard') ? 'active' : ''; ?>" href="/dashboard">
             <div class="icon">📊</div> Tableau de bord
         </a>
-        <a class="nav-item <?php echo ($activeMenu === 'profil') ? 'active' : ''; ?>" href="/profil/<?= $userId ?>">
-            <div class="icon">👤</div> Mon Profil
-        </a>
-        <a class="nav-item <?php echo ($activeMenu === 'objectif') ? 'active' : ''; ?>" onclick="navigate('objectif', this)">
-            <div class="icon">🎯</div> Mon Objectif
-        </a>
-        </div>
-
-        <div class="nav-section">
-        <div class="nav-label">Programme</div>
-        <a class="nav-item <?php echo ($activeMenu === 'suggestions') ? 'active' : ''; ?>" onclick="navigate('suggestions', this)">
-            <div class="icon">🥗</div> Régimes & Activités
-        </a>
-        <a class="nav-item <?php echo ($activeMenu === 'monregime') ? 'active' : ''; ?>" onclick="navigate('monregime', this)">
-            <div class="icon">📋</div> Mon Régime Actuel
-        </a>
-        </div>
-
-        <div class="nav-section">
-        <div class="nav-label">Compte</div>
-        <a class="nav-item <?php echo ($activeMenu === 'porte_monnaie') ? 'active' : ''; ?>" href="/porte_monnaie/<?= $userId ?>">
-            <div class="icon">💰</div> Porte-monnaie
-        </a>
-        <a class="nav-item <?php echo ($activeMenu === 'gold') ? 'active' : ''; ?>" onclick="navigate('gold', this)">
-            <div class="icon">⭐</div> Option Gold
-        </a>
-        </div>
-
-        <div class="nav-section">
-        <div class="nav-label">Paramètres</div>
         <a class="nav-item <?php echo ($activeMenu === 'regimes') ? 'active' : ''; ?>" href="/regimes">
             <div class="icon">🥗</div> Régimes
         </a>
@@ -104,6 +76,26 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
             <div class="icon">🏷️</div> Codes Promo
         </a>
         </div>
+        <?php else: ?>
+        <div class="nav-section">
+        <div class="nav-label">Utilisateur</div>
+        <a class="nav-item <?php echo ($activeMenu === 'profil') ? 'active' : ''; ?>" href="/profil/<?= $userId ?>">
+            <div class="icon">👤</div> Profil
+        </a>
+        <a class="nav-item <?php echo ($activeMenu === 'objectif') ? 'active' : ''; ?>" href="/objectif/<?= $userId ?>">
+            <div class="icon">🎯</div> Objectifs
+        </a>
+        <a class="nav-item <?php echo ($activeMenu === 'monregime') ? 'active' : ''; ?>" href="/monRegime/<?= $userId ?>">
+            <div class="icon">📋</div> Mon régime
+        </a>
+        <a class="nav-item <?php echo ($activeMenu === 'porte_monnaie') ? 'active' : ''; ?>" href="/porte_monnaie/<?= $userId ?>">
+            <div class="icon">💰</div> Porte monnaie
+        </a>
+        <a class="nav-item <?php echo ($activeMenu === 'gold') ? 'active' : ''; ?>" href="/gold/<?= $userId ?>">
+            <div class="icon">⭐</div> Gold
+        </a>
+        </div>
+        <?php endif; ?>
 
         <div class="sidebar-footer">
         <div class="user-card">

@@ -8,9 +8,12 @@ use CodeIgniter\Router\RouteCollection;
 // login et inscription
 $routes->get('/', 'Home::singIn');
 $routes->get('/singUp', 'Home::singUp');
+$routes->get('/dashboard', 'Home::dashboard');
 $routes->get('/logout', 'Home::logout');
 $routes->post('/singIn', 'Home::login');
 $routes->post('/singUp', 'Home::inscription');
+$routes->get('/objectif/(:num)', 'Home::objectif/$1');
+$routes->get('/gold/(:num)', 'Home::gold/$1');
 
 // profil et mise à jour
 $routes->get('/profil/(:num)', 'Home::profil/$1');
@@ -31,7 +34,7 @@ $routes->post('/regimes/update/(:num)', 'RegimeController::updateRegime/$1');
 $routes->get('/regimes/delete/(:num)', 'RegimeController::deleteRegime/$1');
 $routes->post('/regimes/achat', 'RegimeController::acheterRegime');
 $routes->post('/regimes/suggestions', 'RegimeController::suggestions');
-$routes->get('/monRegime', 'RegimeController::monRegime');
+$routes->get('/monRegime/(:num)', 'RegimeController::monRegime/$1');
 
 // sports
 $routes->get('/sports', 'Sport::index');

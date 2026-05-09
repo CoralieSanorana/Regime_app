@@ -70,7 +70,7 @@ class Transaction extends BaseController
                 $transactionModel->insert([
                     'user_id' => $user_id,
                     'type_transaction' => 'credit',
-                    'description' => 'Recharge via code',
+                    'description' => 'Recharge via code: ' . $code,
                     'montant' => $codeTrouver['montant'],
                     'date_transaction' => date('Y-m-d H:i:s'),
                 ]);
