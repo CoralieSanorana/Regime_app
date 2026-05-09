@@ -7,3 +7,4 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/inscription', 'Inscription::index');
+$routes->post('/inscription/save','Inscription::save');

@@ -1077,198 +1077,214 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+  /* ============ VALIDATION STYLES ============ */
+  .error-message {
+    color: var(--danger);
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: fadeIn 0.2s ease;
+  }
+
+  /* Style pour l'input quand il y a une erreur */
+  input.input-error, select.input-error {
+    border-color: var(--danger) !important;
+    background: rgba(248, 113, 113, 0.03); /* Un très léger fond rouge */
+  }
+
+  /* Pour que l'erreur s'affiche bien sous les inputs */
+  .form-group div.error-message {
+    margin-bottom: -10px; /* Ajustement optionnel selon votre espacement */
+  }
 </style>
 </head>
-<body>    
+<body>
 
-    <!-- ══════════════════════════════════ -->
-    <!--      AUTH: REGISTER STEP 1        -->
-    <!-- ══════════════════════════════════ -->
-    <div class="auth-shell active" id="page-register1">
-      <div class="auth-visual">
-          <div class="auth-visual-brand">🌿 NutriPath</div>
-          <p>Rejoignez des milliers d'utilisateurs qui ont transformé leur alimentation et leur corps.</p>
-          <div class="auth-features">
-          <div class="auth-feature"><div class="auth-feature-icon">✅</div><span>Inscription gratuite</span></div>
-          <div class="auth-feature"><div class="auth-feature-icon">🔒</div><span>Vos données restent privées</span></div>
-          <div class="auth-feature"><div class="auth-feature-icon">⚡</div><span>Résultats dès le premier jour</span></div>
-          </div>
-      </div>
-      <div class="auth-form-wrap">
-          <div class="step-progress">
-          <div class="step active">
-              <div class="step-circle">1</div>
-              <div class="step-label">Infos personnelles</div>
-          </div>
-          <div class="step-line"></div>
-          <div class="step">
-              <div class="step-circle">2</div>
-              <div class="step-label">Santé</div>
-          </div>
-          <div class="step-line"></div>
-          <div class="step">
-              <div class="step-circle">3</div>
-              <div class="step-label">Sécurité</div>
-          </div>
-          </div>
+<?php
+    $validation = session('validation') ?? [];
+    
+    // Logique de détection de l'étape active après erreur
+    $activeStep = 'page-register1'; // Étape par défaut
+    if (isset($validation['poids_actuel']) || isset($validation['taille'])) {
+        $activeStep = 'page-register2';
+    } elseif (isset($validation['mot_de_passe']) || isset($validation['mot_de_passe_confirmer'])) {
+        $activeStep = 'page-register3';
+    }
+?>
 
-          <h2>Créer un compte</h2>
-          <p class="auth-subtitle">Étape 1 — Vos informations personnelles & contact.</p>
+    <form action="<?= base_url('/inscription/save') ?>" method="post">
+        <?= csrf_field() ?>
 
-          <div class="form-row">
-          <div class="form-group">
-              <label>Prénom</label>
-              <input type="text" placeholder="Jean">
-          </div>
-          <div class="form-group">
-              <label>Nom</label>
-              <input type="text" placeholder="Dupont">
-          </div>
-          </div>
-          <div class="form-row">
-          <div class="form-group">
-              <label>Genre</label>
-              <select>
-              <option>— Choisir —</option>
-              <option>Homme</option>
-              <option>Femme</option>
-              <option>Autre</option>
-              </select>
-          </div>
-          <div class="form-group">
-              <label>Date de naissance</label>
-              <input type="date">
-          </div>
-          </div>
-          <div class="form-group">
-          <label>Adresse Email</label>
-          <input type="email" placeholder="jean.dupont@mail.com">
-          </div>
-          <div class="form-group">
-          <label>Adresse</label>
-          <input type="text" placeholder="123 Rue de la Santé, Antananarivo">
-          </div>
+        <!-- ══════════════════════════════════ -->
+        <!--      AUTH: REGISTER STEP 1        -->
+        <!-- ══════════════════════════════════ -->
+        <div class="auth-shell <?= $activeStep === 'page-register1' ? 'active' : '' ?>" id="page-register1">
+            <div class="auth-visual">
+                <div class="auth-visual-brand">🌿 NutriPath</div>
+                <p>Rejoignez des milliers d'utilisateurs qui ont transformé leur alimentation et leur corps.</p>
+                <div class="auth-features">
+                    <div class="auth-feature"><div class="auth-feature-icon">✅</div><span>Inscription gratuite</span></div>
+                    <div class="auth-feature"><div class="auth-feature-icon">🔒</div><span>Vos données restent privées</span></div>
+                    <div class="auth-feature"><div class="auth-feature-icon">⚡</div><span>Résultats dès le premier jour</span></div>
+                </div>
+            </div>
+            <div class="auth-form-wrap">
+                <?php if (isset($validation['db'])): ?>
+                    <div class="error-message" style="margin-bottom: 16px;">
+                        <span style="font-size: 14px;">!</span> <?= $validation['db'] ?>
+                    </div>
+                <?php endif; ?>
 
-          <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="showRegister2()">
-          Continuer →
-          </button>
-          <div style="text-align:center; margin-top:14px; font-size:0.82rem; color:var(--text-muted);">
-          Déjà inscrit ? <a class="auth-link" onclick="showLogin()">Se connecter</a>
-          </div>
-      </div>
-    </div>
+                <div class="step-progress">
+                    <div class="step active"><div class="step-circle">1</div><div class="step-label">Infos personnelles</div></div>
+                    <div class="step-line"></div>
+                    <div class="step"><div class="step-circle">2</div><div class="step-label">Santé</div></div>
+                    <div class="step-line"></div>
+                    <div class="step"><div class="step-circle">3</div><div class="step-label">Sécurité</div></div>
+                </div>
 
-    <!-- ══════════════════════════════════ -->
-    <!--      AUTH: REGISTER STEP 2        -->
-    <!-- ══════════════════════════════════ -->
-    <div class="auth-shell" id="page-register2">
-      <div class="auth-visual">
-          <div class="auth-visual-brand">🌿 NutriPath</div>
-          <p>Ces informations nous permettent de calculer votre IMC et de vous proposer les meilleurs régimes.</p>
-      </div>
-      <div class="auth-form-wrap">
-          <div class="step-progress">
-          <div class="step done">
-              <div class="step-circle">✓</div>
-              <div class="step-label">Infos personnelles</div>
-          </div>
-          <div class="step-line done"></div>
-          <div class="step active">
-              <div class="step-circle">2</div>
-              <div class="step-label">Santé</div>
-          </div>
-          <div class="step-line"></div>
-          <div class="step">
-              <div class="step-circle">3</div>
-              <div class="step-label">Sécurité</div>
-          </div>
-          </div>
+                <h2>Créer un compte</h2>
+                <p class="auth-subtitle">Étape 1 — Vos informations personnelles & contact.</p>
 
-          <h2>Informations de santé</h2>
-          <p class="auth-subtitle">Étape 2 — Ces données servent uniquement au calcul de votre IMC.</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Prénom</label>
+                        <input type="text" name="prenom" placeholder="Jean" class="<?= isset($validation['prenom']) ? 'input-error' : '' ?>" value="<?= old('prenom') ?>">
+                        <?php if (isset($validation['prenom'])): ?>
+                            <div class="error-message"><span>⚠️</span> <?= $validation['prenom'] ?></div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" name="nom" placeholder="Dupont" class="<?= isset($validation['nom']) ? 'input-error' : '' ?>" value="<?= old('nom') ?>">
+                        <?php if (isset($validation['nom'])): ?>
+                            <div class="error-message"><span>⚠️</span> <?= $validation['nom'] ?></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
 
-          <div class="form-row">
-          <div class="form-group">
-              <label>Poids actuel (kg)</label>
-              <input type="number" placeholder="70">
-          </div>
-          <div class="form-group">
-              <label>Taille (cm)</label>
-              <input type="number" placeholder="175">
-          </div>
-          </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Genre</label>
+                        <select name="genre" class="<?= isset($validation['genre']) ? 'input-error' : '' ?>">
+                            <option value="">— Choisir —</option>
+                            <option value="M" <?= old('genre') === 'M' ? 'selected' : '' ?>>Homme</option>
+                            <option value="F" <?= old('genre') === 'F' ? 'selected' : '' ?>>Femme</option>
+                        </select>
+                        <?php if (isset($validation['genre'])): ?>
+                            <div class="error-message"><span>⚠️</span> <?= $validation['genre'] ?></div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group">
+                        <label>Date de naissance</label>
+                        <input type="date" name="date_naissance" class="<?= isset($validation['date_naissance']) ? 'input-error' : '' ?>" value="<?= old('date_naissance') ?>">
+                        <?php if (isset($validation['date_naissance'])): ?>
+                            <div class="error-message"><span>⚠️</span> <?= $validation['date_naissance'] ?></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
 
-          <div class="imc-display" style="margin-top:8px;">
-          <div class="imc-ring">
-              <svg width="120" height="120">
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#1f2b23" stroke-width="10"/>
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#4ade80" stroke-width="10"
-                  stroke-dasharray="220 314" stroke-linecap="round"/>
-              </svg>
-              <div class="imc-value-wrap">
-              <div class="imc-number">22.9</div>
-              <div class="imc-unit">IMC</div>
-              </div>
-          </div>
-          <div class="imc-info">
-              <h3>Poids Normal</h3>
-              <div class="imc-status status-normal">✓ IMC Sain</div>
-              <div class="imc-scale">
-              <span class="scale-seg" style="background:rgba(96,165,250,0.15);color:var(--info);">Insuffisant &lt;18.5</span>
-              <span class="scale-seg" style="background:rgba(74,222,128,0.15);color:var(--accent);">Normal 18.5–24.9</span>
-              <span class="scale-seg" style="background:rgba(245,158,11,0.15);color:var(--gold);">Surpoids 25–29.9</span>
-              <span class="scale-seg" style="background:rgba(248,113,113,0.15);color:var(--danger);">Obésité ≥30</span>
-              </div>
-          </div>
-          </div>
+                <div class="form-group">
+                    <label>Adresse Email</label>
+                    <input type="email" name="email" placeholder="jean.dupont@mail.com" class="<?= isset($validation['email']) ? 'input-error' : '' ?>" value="<?= old('email') ?>">
+                    <?php if (isset($validation['email'])): ?>
+                        <div class="error-message"><span>⚠️</span> <?= $validation['email'] ?></div>
+                    <?php endif; ?>
+                </div>
 
-          <div style="display:flex;gap:12px;">
-          <button class="btn btn-outline" onclick="showRegister()">← Retour</button>
-          <button class="btn btn-primary" style="flex:1;justify-content:center;" onclick="showRegister3()">Continuer →</button>
-          </div>
-      </div>
-    </div>
+                <button type="button" class="btn btn-primary" style="width:100%; justify-content:center;" onclick="showStep(2)">Continuer →</button>
+                <div style="text-align:center; margin-top:14px; font-size:0.82rem; color:var(--text-muted);">
+                  Déjà inscrit ? <a href="<?= base_url('/login') ?>" class="auth-link" >Se connecter</a>
+                </div>
+            </div>
+        </div>
 
-    <!-- ══════════════════════════════════ -->
-    <!--      AUTH: REGISTER STEP 3        -->
-    <!-- ══════════════════════════════════ -->
-    <div class="auth-shell" id="page-register3">
-      <div class="auth-visual">
-          <div class="auth-visual-brand">🌿 NutriPath</div>
-          <p>Choisissez un mot de passe sécurisé pour protéger votre compte.</p>
-      </div>
-      <div class="auth-form-wrap">
-          <div class="step-progress">
-          <div class="step done"><div class="step-circle">✓</div><div class="step-label">Infos personnelles</div></div>
-          <div class="step-line done"></div>
-          <div class="step done"><div class="step-circle">✓</div><div class="step-label">Santé</div></div>
-          <div class="step-line done"></div>
-          <div class="step active"><div class="step-circle">3</div><div class="step-label">Sécurité</div></div>
-          </div>
+        <!-- ══════════════════════════════════ -->
+        <!--      AUTH: REGISTER STEP 2        -->
+        <!-- ══════════════════════════════════ -->
+        <div class="auth-shell <?= $activeStep === 'page-register2' ? 'active' : '' ?>" id="page-register2">
+            <div class="auth-visual">
+                <div class="auth-visual-brand">🌿 NutriPath</div>
+                <p>Ces informations nous permettent de calculer votre IMC et de vous proposer les meilleurs régimes.</p>
+            </div>
+            <div class="auth-form-wrap">
+                <div class="step-progress">
+                    <div class="step done"><div class="step-circle">✓</div><div class="step-label">Infos</div></div>
+                    <div class="step-line done"></div>
+                    <div class="step active"><div class="step-circle">2</div><div class="step-label">Santé</div></div>
+                    <div class="step-line"></div>
+                    <div class="step"><div class="step-circle">3</div><div class="step-label">Sécurité</div></div>
+                </div>
 
-          <h2>Sécurité du compte</h2>
-          <p class="auth-subtitle">Étape 3 — Créez votre mot de passe.</p>
+                <h2>Informations de santé</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Poids actuel (kg)</label>
+                        <input type="number" name="poids_actuel" placeholder="70" value="<?= old('poids_actuel') ?>">
+                        <?php if (isset($validation['poids_actuel'])): ?>
+                            <div class="error-message"><span>⚠️</span> <?= $validation['poids_actuel'] ?></div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="form-group">
+                        <label>Taille (cm)</label>
+                        <input type="number" name="taille" placeholder="175" value="<?= old('taille') ?>">
+                        <?php if (isset($validation['taille'])): ?>
+                            <div class="error-message"><span>⚠️</span> <?= $validation['taille'] ?></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
 
-          <div class="form-group">
-          <label>Mot de passe</label>
-          <input type="password" placeholder="Au moins 8 caractères">
-          </div>
-          <div class="form-group">
-          <label>Confirmer le mot de passe</label>
-          <input type="password" placeholder="Répétez votre mot de passe">
-          </div>
+                <div style="display:flex; gap:12px; margin-top: 20px;">
+                    <button type="button" class="btn btn-outline" onclick="showStep(1)">← Retour</button>
+                    <button type="button" class="btn btn-primary" style="flex:1; justify-content:center;" onclick="showStep(3)">Continuer →</button>
+                </div>
+            </div>
+        </div>
 
-          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:0.82rem;color:var(--text-muted);line-height:1.7;">
-          🔒 Votre mot de passe doit contenir :<br>
-          · Au moins 8 caractères · Une majuscule · Un chiffre
-          </div>
+        <!-- ══════════════════════════════════ -->
+        <!--      AUTH: REGISTER STEP 3        -->
+        <!-- ══════════════════════════════════ -->
+        <div class="auth-shell <?= $activeStep === 'page-register3' ? 'active' : '' ?>" id="page-register3">
+            <div class="auth-visual">
+                <div class="auth-visual-brand">🌿 NutriPath</div>
+                <p>Choisissez un mot de passe sécurisé pour protéger votre compte.</p>
+            </div>
+            <div class="auth-form-wrap">
+                <div class="step-progress">
+                    <div class="step done"><div class="step-circle">✓</div><div class="step-label">Infos</div></div>
+                    <div class="step-line done"></div>
+                    <div class="step done"><div class="step-circle">✓</div><div class="step-label">Santé</div></div>
+                    <div class="step-line done"></div>
+                    <div class="step active"><div class="step-circle">3</div><div class="step-label">Sécurité</div></div>
+                </div>
 
-          <div style="display:flex;gap:12px;">
-          <button class="btn btn-outline" onclick="showRegister2()">← Retour</button>
-          <button class="btn btn-primary" style="flex:1;justify-content:center;" onclick="showApp()">Créer mon compte ✓</button>
-          </div>
-      </div>
-    </div>
+                <h2>Sécurité du compte</h2>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" name="mot_de_passe" class="<?= isset($validation['mot_de_passe']) ? 'input-error' : '' ?>" value="<?= old('mot_de_passe') ?>">
+                    <?php if (isset($validation['mot_de_passe'])): ?>
+                        <div class="error-message"><span>⚠️</span> <?= $validation['mot_de_passe'] ?></div>
+                    <?php endif; ?>
+                </div>
+                <div class="form-group">
+                    <label>Confirmer le mot de passe</label>
+                    <input type="password" name="mot_de_passe_confirmer" class="<?= isset($validation['mot_de_passe_confirmer']) ? 'input-error' : '' ?>" value="<?= old('mot_de_passe_confirmer') ?>">
+                    <?php if (isset($validation['mot_de_passe_confirmer'])): ?>
+                        <div class="error-message"><span>⚠️</span> <?= $validation['mot_de_passe_confirmer'] ?></div>
+                    <?php endif; ?>
+                </div>
+
+                <div style="display:flex; gap:12px; margin-top: 20px;">
+                    <button type="button" class="btn btn-outline" onclick="showStep(2)">← Retour</button>
+                    <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center;">Créer mon compte ✓</button>
+                </div>
+            </div>
+        </div>
+    </form>
 
     <script>
         // ── NAVIGATION AUTH ──
@@ -1276,14 +1292,17 @@
             document.querySelectorAll('.auth-shell').forEach(p => p.classList.remove('active'));
             document.getElementById('page-login').classList.add('active');
         }
+
         function showRegister() {
             document.querySelectorAll('.auth-shell').forEach(p => p.classList.remove('active'));
             document.getElementById('page-register1').classList.add('active');
         }
+
         function showRegister2() {
             document.querySelectorAll('.auth-shell').forEach(p => p.classList.remove('active'));
             document.getElementById('page-register2').classList.add('active');
         }
+
         function showRegister3() {
             document.querySelectorAll('.auth-shell').forEach(p => p.classList.remove('active'));
             document.getElementById('page-register3').classList.add('active');
@@ -1347,6 +1366,11 @@
             toast.classList.add('show');
             clearTimeout(toastTimer);
             toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        function showStep(stepNumber) {
+            document.querySelectorAll('.auth-shell').forEach(shell => shell.classList.remove('active'));
+            document.getElementById('page-register' + stepNumber).classList.add('active');
         }
 
         // ── ANIMATE BARS ON LOAD ──
