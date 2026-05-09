@@ -29,3 +29,10 @@ INSERT INTO codes_porte_monnaie (code_secret, montant) VALUES
 ('RECH-007', 25000), ('RECH-008', 50000), ('RECH-009', 10000),
 ('RECH-010', 5000), ('RECH-011', 15000), ('RECH-012', 2000),
 ('RECH-013', 10000), ('RECH-014', 30000), ('RECH-015', 10000);
+
+-- 3 Objectifs
+INSERT INTO objectifs (libelle, image_url, description) VALUES
+('Perdre du Poids', 'perdre_poids.jpg','Réduisez votre poids corporel avec un programme adapté à votre métabolisme.'),
+('Augmenter son Poids', 'augmenter_poids.jpg','Prenez de la masse musculaire ou retrouvez un poids sain grâce à des régimes riches.'),
+('Atteindre l''IMC idéal', 'imc_ideal.jpg','Atteignez et maintenez un IMC optimal entre 18.5 et 24.9.');
+

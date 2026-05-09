@@ -1458,3 +1458,16 @@ in SYSTEMPATH/Validation/Validation.php on line 354.
 11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 13 SYSTEMPATH/rewrite.php(44): require_once('/home/jean/Bureau/L2/S4/Systeme d\'information/Regime/Regime_app/public/index.php')
+CRITICAL - 2026-05-09 15:37:53 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "objectifs.php"
+[Method: GET, Route: objectifs]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 39.
+ 1 SYSTEMPATH/View/View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1250): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Objectifs.php(9): view()
+ 4 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Objectifs->index()
+ 5 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+10 SYSTEMPATH/rewrite.php(44): require_once('/home/jean/Bureau/L2/S4/Systeme d\'information/Regime/Regime_app/public/index.php')
