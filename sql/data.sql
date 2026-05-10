@@ -36,3 +36,5 @@ INSERT INTO objectifs (libelle, image_url, description) VALUES
 ('Atteindre l''IMC idéal', 'imc_ideal.jpg','Atteignez et maintenez un IMC optimal entre 18.5 et 24.9.'),
 ('Augmenter son Poids', 'augmenter_poids.jpg','Prenez de la masse musculaire ou retrouvez un poids sain grâce à des régimes riches.');
 
+INSERT INTO prix_gold (prix) VALUES 
+(30000);

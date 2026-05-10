@@ -23,7 +23,13 @@ CREATE TABLE objectifs (
     description TEXT
 );
 
-CREATE TABLE user_details (
+CREATE TABLE prix_gold (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    prix DECIMAL(10, 2) NOT NULL,
+    date_mise_a_jour TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_details (suffisant
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     poids_actuel DECIMAL(5, 2) NOT NULL,

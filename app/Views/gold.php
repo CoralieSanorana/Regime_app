@@ -60,7 +60,7 @@
       </div>
 
       <div style="margin-top:24px;padding:24px;background:var(--surface);border:1px dashed rgba(245,158,11,0.25);border-radius:var(--radius);text-align:center;">
-        <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);margin-bottom:6px;">Prix Gold : 30 000 Ar</div>
+        <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--gold);margin-bottom:6px;">Prix Gold : <?php if(!empty($prix)) { echo number_format($prix, 0, ',', ' '); } ?> Ar</div>
         <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">Paiement unique — Accès à vie · Remboursable sur le porte-monnaie NutriPath</div>
 
         <?php if(!empty($is_gold) && (int) $is_gold === 1): ?>
@@ -113,7 +113,6 @@
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                alert("Option Gold activée avec succès !");
                 window.location.href = BASE_URL + 'gold';
             } else {
                 alert("Erreur lors de l'enregistrement : " + data.message);
