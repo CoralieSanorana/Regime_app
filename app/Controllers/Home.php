@@ -40,6 +40,8 @@ class Home extends BaseController
         }
     }
 
+//------------------------------------------------------------------------
+// Coralie
     public function logout(){
         session()->destroy();
         return redirect()->to('/')->with('success', 'Déconnexion réussie.');
@@ -400,5 +402,12 @@ class Home extends BaseController
             'popularRegimes' => $popularRegimes,
             'rechargeTransactions' => $rechargeTransactions,
         ]);
+    }
+
+    // ------------------------------------------------------------
+    // Jean Pierre
+    public function main()
+    {
+        return view('main');
     }
 }

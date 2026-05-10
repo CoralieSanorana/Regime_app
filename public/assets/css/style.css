@@ -1063,6 +1063,57 @@
     .topbar { padding: 16px 24px; }
   }
 
+
+    /* ============ FOOTER FIXE UNE LIGNE ============ */
+    .app-footer {
+        position: fixed;
+        bottom: 0;
+        left: 280px; /* Aligné sur ta sidebar */
+        right: 0;
+        height: 50px; /* Plus fin pour une seule ligne */
+        background: rgba(10, 14, 11, 0.85);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .footer-line {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        white-space: nowrap; /* Force le contenu sur une seule ligne */
+    }
+
+    .footer-sep {
+        color: var(--accent);
+        font-weight: bold;
+        opacity: 0.6;
+    }
+
+    .author-name {
+        color: var(--accent);
+        font-weight: 500;
+    }
+
+    /* Ajustement pour mobile */
+    @media (max-width: 768px) {
+        .app-footer {
+            left: 0;
+        }
+        .footer-line {
+            font-size: 0.75rem;
+            gap: 8px;
+        }
+        .footer-mission {
+            display: none; /* On cache la mission sur petit écran pour garder une ligne */
+        }
+    }
+
   /* ============ SCROLLBAR ============ */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }

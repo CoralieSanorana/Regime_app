@@ -16,7 +16,7 @@ INSERT INTO regimes (nom_regime, pourcentage_viande, pourcentage_poisson, pource
 ('Force & Muscle', 60, 10, 30, 0.200, 7500),
 ('Équilibre Vert', 20, 40, 40, -0.100, 4500),
 ('Turbo Perte', 0, 50, 50, -0.500, 8000),
-('Maintien Vital', 33, 33, 34, 0.000, 4000);
+('Maintien Vital', 33, 33, 34, 0.000, 4000);    
 
 -- 5 Activités Sportives
 INSERT INTO activites_sportives (nom_activite) VALUES 
@@ -29,3 +29,12 @@ INSERT INTO codes_porte_monnaie (code_secret, montant) VALUES
 ('RECH-007', 25000), ('RECH-008', 50000), ('RECH-009', 10000),
 ('RECH-010', 5000), ('RECH-011', 15000), ('RECH-012', 2000),
 ('RECH-013', 10000), ('RECH-014', 30000), ('RECH-015', 10000);
+
+-- 3 Objectifs
+INSERT INTO objectifs (libelle, image_url, description) VALUES
+('Perdre du Poids', 'perdre_poids.jpg','Réduisez votre poids corporel avec un programme adapté à votre métabolisme.'),
+('Atteindre l''IMC idéal', 'imc_ideal.jpg','Atteignez et maintenez un IMC optimal entre 18.5 et 24.9.'),
+('Augmenter son Poids', 'augmenter_poids.jpg','Prenez de la masse musculaire ou retrouvez un poids sain grâce à des régimes riches.');
+
+INSERT INTO prix_gold (prix) VALUES 
+(30000);
