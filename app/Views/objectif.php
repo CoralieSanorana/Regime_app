@@ -1144,44 +1144,51 @@
         <p>Définissez votre objectif pour recevoir des régimes adaptés</p>
       </div>
 
-      <div class="objective-grid">
-        <div class="obj-card selected" onclick="selectObj(this, 'Perdre du poids')">
-          <div class="obj-emoji">📉</div>
-          <div class="obj-title">Perdre du poids</div>
-          <div class="obj-desc">Réduisez votre poids corporel avec un programme adapté à votre métabolisme.</div>
-        </div>
-        <div class="obj-card" onclick="selectObj(this, 'Augmenter son poids')">
-          <div class="obj-emoji">📈</div>
-          <div class="obj-title">Augmenter son poids</div>
-          <div class="obj-desc">Prenez de la masse musculaire ou retrouvez un poids sain grâce à des régimes riches.</div>
-        </div>
-        <div class="obj-card" onclick="selectObj(this, 'Atteindre l\'IMC idéal')">
-          <div class="obj-emoji">⚖️</div>
-          <div class="obj-title">Atteindre l'IMC idéal</div>
-          <div class="obj-desc">Atteignez et maintenez un IMC optimal entre 18.5 et 24.9.</div>
-        </div>
-      </div>
+        
+        <div class="objective-grid">
+          <?php if(!empty($objectifs)): ?>
+        
+              <?php foreach($objectifs as $obj): ?>
+              
+                <div class="obj-card" onclick="selectObj(this, '<?= addslashes($obj['libelle']) ?>')">
+                  <?php if($obj['libelle'] === 'Perdre du Poids'): ?>
+                    <div class="obj-emoji">📉</div>
+                  <?php elseif($obj['libelle'] === 'Augmenter son Poids'): ?>
+                    <div class="obj-emoji">📈</div>  
+                  <?php else: ?>
+                    <div class="obj-emoji">⚖️</div>
+                  <?php endif; ?>
+                  <div class="obj-title"><?= $obj['libelle'] ?></div>
+                  <div class="obj-desc"><?= $obj['description'] ?></div>
+                </div>
 
-      <div class="card">
-        <div class="card-title" style="margin-bottom:1rem; font-weight:600;">🎯 Définir votre poids cible</div>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
-          <div class="form-group">
-            <label>Poids actuel (kg)</label>
-            <input type="number" value="70" readonly style="opacity:0.6;">
-          </div>
-          <div class="form-group">
-            <label>Poids cible (kg)</label>
-            <input type="number" placeholder="65">
-          </div>
+              <?php endforeach; ?>
+        
+          <?php endif; ?>
         </div>
-        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:0.85rem;">
-          📊 Différence à combler : <strong style="color:var(--accent);">−5 kg</strong> &nbsp;·&nbsp;
-          Durée estimée : <strong style="color:var(--info);">~30 à 45 jours</strong>
+        
+        <div class="card">
+          <div class="card-title" style="margin-bottom:1rem; font-weight:600;">🎯 Définir votre poids cible</div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
+            <div class="form-group">
+              <label>Poids actuel (kg)</label>
+              <input type="number" name="poids_actuel" value="70" readonly style="opacity:0.6;"> 
+              <!-- la valeur de poids est changer par l'user actif -->
+            </div>
+            <div class="form-group">
+              <label>Poids cible (kg)</label>
+              <!-- la valeur de poids cible doit calculer si l'user choisi l'IMC ideal --> 
+              <input type="number" name="poids_cible" placeholder="65">
+            </div>
+          </div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:0.85rem;">
+            📊 Différence à combler : <strong style="color:var(--accent);">−5 kg</strong> &nbsp;·&nbsp;
+            Durée estimée : <strong style="color:var(--info);">~30 à 45 jours</strong>
+          </div>
+          <button class="btn btn-primary" onclick="navigate('suggestions', null); showNotif('Objectif défini ! Voici vos suggestions personnalisées.')">
+            Voir mes suggestions →
+          </button>
         </div>
-        <button class="btn btn-primary" onclick="navigate('suggestions', null); showNotif('Objectif défini ! Voici vos suggestions personnalisées.')">
-          Voir mes suggestions →
-        </button>
-      </div>
     </div>
 
     <?= view('footer') ?>
@@ -1195,11 +1202,17 @@
 
 <script>
   // ── SELECTION ──
+  let objectSelectionner = null;
   function selectObj(el, name) {
     document.querySelectorAll('.obj-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
     showNotif("🎯 Objectif choisi : " + name);
+
+    objectSelectionner = name;
+    console.log("Objectif sélectionné :", objectSelectionner);
   }
+
+
 
   // ── TOAST ──
   let toastTimer;

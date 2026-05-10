@@ -33,6 +33,6 @@ INSERT INTO codes_porte_monnaie (code_secret, montant) VALUES
 -- 3 Objectifs
 INSERT INTO objectifs (libelle, image_url, description) VALUES
 ('Perdre du Poids', 'perdre_poids.jpg','Réduisez votre poids corporel avec un programme adapté à votre métabolisme.'),
-('Augmenter son Poids', 'augmenter_poids.jpg','Prenez de la masse musculaire ou retrouvez un poids sain grâce à des régimes riches.'),
-('Atteindre l''IMC idéal', 'imc_ideal.jpg','Atteignez et maintenez un IMC optimal entre 18.5 et 24.9.');
+('Atteindre l''IMC idéal', 'imc_ideal.jpg','Atteignez et maintenez un IMC optimal entre 18.5 et 24.9.'),
+('Augmenter son Poids', 'augmenter_poids.jpg','Prenez de la masse musculaire ou retrouvez un poids sain grâce à des régimes riches.');
 

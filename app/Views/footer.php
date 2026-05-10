@@ -7,10 +7,3 @@
         <span class="footer-author"><span class="author-name">ETU004085 - ETU004250 - ETU004169</span></span>
     </div>
 </footer>
-
-<div id="toast" class="toast">
-    <div class="toast-content">
-        <span id="toast-icon">✨</span>
-        <span id="toast-msg"></span>
-    </div>
-</div>
