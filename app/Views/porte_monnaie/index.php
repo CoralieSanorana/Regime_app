@@ -1,3 +1,4 @@
+<?php $page = 'Porte-monnaie'; ?>
     <?= view('header', ['activeMenu' => 'porte_monnaie']) ?>
     <?php
     if (!isset($userId)) {
@@ -60,15 +61,13 @@
           </div>
         </div>
 
-        <script>
+      <?= view('footer') ?>
+
+      <script>
           window.addEventListener('DOMContentLoaded', function () {
             const topbarTitle = document.getElementById('topbar-title');
             if (topbarTitle) {
               topbarTitle.textContent = 'Porte-monnaie';
             }
           });
-        </script>
-
-    </div>
-</body>
-</html>
+      </script>

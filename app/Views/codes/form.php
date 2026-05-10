@@ -1,4 +1,5 @@
     <?= view('header', ['activeMenu' => 'codes']) ?>
+    <?php $page = 'Codes Promo'; ?>
     <?php $isEdit = isset($code) && !empty($code); ?>
     <div class="page active" id="pg-code-add">
         <div class="container mt-5">

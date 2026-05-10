@@ -1,3 +1,4 @@
+<?php $page = 'Régimes'; ?>
     <?= view('header', ['activeMenu' => 'regimes']) ?>
     <div class="page active" id="pg-regimes">
         <div class="container mt-5">
@@ -5,6 +6,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h2>Liste des régimes
                         <a href="/regimes/add" class="btn btn-primary">Ajouter un régime</a>
+                        <a href="/regimes/export-list" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Export PDF</a>
                     </h2>
                 </div>
                 <div class="card-body">
@@ -59,3 +61,5 @@
             </div>
         </div>
     </div>
+
+    <?= view('footer') ?>

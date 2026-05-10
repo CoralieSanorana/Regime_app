@@ -19,12 +19,13 @@ class Gold extends BaseController
     
         $data['is_gold'] = $is_gold;
         $data['prix'] = $prix['prix'] ?? 30000;
-        return view('gold',$data);
+        return view('users/gold',$data);
     }
 
     public function activate()
     {
         $user_id = session()->get('user_id') ?? 1;
+        $home = new Home();
         $userModel = new UserModel();
         $prix_gold = new PrixGold();
         $prix = $prix_gold->orderBy('date_mise_a_jour', 'DESC')->first();
@@ -35,6 +36,7 @@ class Gold extends BaseController
             $solde_restant = $solde - $prix_gold;
             $userModel->update($user_id, ['solde_monnaie' => $solde_restant]);
             $userModel->update($user_id, ['is_gold' => true]);
+            $home->freshUser($user_id);
         }else{
             return $this->response->setJSON(['status' => 'error', 'message' => 'Solde insuffisant pour activer l\'option Gold.']);
         }

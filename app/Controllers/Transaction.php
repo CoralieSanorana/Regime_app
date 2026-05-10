@@ -12,8 +12,9 @@ class Transaction extends BaseController
         return view('transactions/index', $data);
     }
 
-    public function findOne($user_id)
+    public function findOne()
     {
+        $user_id = session()->get('user_id');
         $userModel = new UsersModel();
         $model = new TransactionModel();
         $user = $userModel->find($user_id);

@@ -1,9 +1,11 @@
+    <?php $page = 'Codes Promo'; ?>
     <?= view('header', ['activeMenu' => 'codes']) ?>
     <div class="page active" id="pg-codes">
         <div class="container mt-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2>Codes de recharge
                     <a href="/codes/add" class="btn btn-primary">Ajouter un code</a>
+                    <a href="/codes/export-list" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Export PDF</a>
                 </h2>
             </div>
             <?php if (session()->getFlashdata('succes')): ?>

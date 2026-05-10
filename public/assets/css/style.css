@@ -128,11 +128,29 @@
     font-size: 15px;
     background: var(--surface2);
     flex-shrink: 0;
+    color: #fff; /* default icon color set to white */
   }
 
   .nav-item.active .icon {
     background: rgba(74,222,128,0.15);
+    color: #fff;
   }
+
+  /* Global icon rules: SVGs inherit currentColor, PNGs are filtered to appear white */
+  .icon svg, .btn svg, .password-toggle svg, .stat-icon svg, .brand-icon svg, .imc-ring svg {
+    width: 20px; height: 20px; display: block;
+    stroke: currentColor; fill: none; color: inherit;
+  }
+
+  .icon img, .btn img, .activity-icon img, .nav-item img, .export-btn img, .btn-icon img {
+    display: inline-block; vertical-align: middle;
+    filter: invert(1) brightness(2) contrast(1);
+  }
+
+  /* Utility: force white icon color when needed */
+  .icon-white { color: #fff !important; }
+  .icon-muted { color: var(--text-muted); }
+
 
   .sidebar-footer {
     margin-top: auto;

@@ -8,13 +8,26 @@ $userEmail = $session->get('user_email') ?: 'example@example.com';
 $userSolde = $session->get('user_solde') ?: 0;
 $userRole = $session->get('user_role') ?: 'user';
 $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 0, 1));
+$pageTitle = $page ?? match ($activeMenu ?? '') {
+    'dashboard' => 'Tableau de bord',
+    'profil' => 'Mon Profil',
+    'objectif' => 'Mon Objectif',
+    'objectifs' => 'Suggestions',
+    'monregime' => 'Mon Régime',
+    'porte_monnaie' => 'Porte-monnaie',
+    'gold' => 'Option Gold',
+    'regimes' => 'Régimes',
+    'sports' => 'Sports',
+    'codes' => 'Codes Promo',
+    default => 'NutriPath',
+};
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?= esc($pageTitle) ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
         <style>
             .password-field { position: relative; }
@@ -80,19 +93,19 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
         <?php else: ?>
         <div class="nav-section">
         <div class="nav-label">Utilisateur</div>
-        <a class="nav-item <?php echo ($activeMenu === 'profil') ? 'active' : ''; ?>" href="/profil/<?= $userId ?>">
+        <a class="nav-item <?php echo ($activeMenu === 'profil') ? 'active' : ''; ?>" href="/profil">
             <div class="icon">👤</div> Profil
         </a>
-        <a class="nav-item <?php echo ($activeMenu === 'objectif') ? 'active' : ''; ?>" href="/objectif/<?= $userId ?>">
+        <a class="nav-item <?php echo ($activeMenu === 'objectif') ? 'active' : ''; ?>" href="/objectif">
             <div class="icon">🎯</div> Objectifs
         </a>
-        <a class="nav-item <?php echo ($activeMenu === 'monregime') ? 'active' : ''; ?>" href="/monRegime/<?= $userId ?>">
+        <a class="nav-item <?php echo ($activeMenu === 'monregime') ? 'active' : ''; ?>" href="/monRegime">
             <div class="icon">📋</div> Mon régime
         </a>
-        <a class="nav-item <?php echo ($activeMenu === 'porte_monnaie') ? 'active' : ''; ?>" href="/porte_monnaie/<?= $userId ?>">
+        <a class="nav-item <?php echo ($activeMenu === 'porte_monnaie') ? 'active' : ''; ?>" href="/porte_monnaie">
             <div class="icon">💰</div> Porte monnaie
         </a>
-        <a class="nav-item <?php echo ($activeMenu === 'gold') ? 'active' : ''; ?>" href="/gold/<?= $userId ?>">
+        <a class="nav-item <?php echo ($activeMenu === 'gold') ? 'active' : ''; ?>" href="/gold">
             <div class="icon">⭐</div> Gold
         </a>
         </div>
@@ -114,7 +127,7 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
 
         <!-- TOP BAR -->
         <div class="topbar">
-            <div class="topbar-title" id="topbar-title">Tableau de bord</div>
+            <div class="topbar-title" id="topbar-title"><?= esc($pageTitle) ?></div>
             <div class="topbar-actions">
                 <div class="wallet-badge" onclick="navigate('wallet', null)">
                 💰 <span class="amount"><?= esc((string) $userSolde) ?></span>
@@ -133,30 +146,4 @@ $initials = strtoupper(substr($userPrenom ?: $userNom, 0, 1) . substr($userNom, 
             <div class="flash-message error"><?= esc(session()->getFlashdata('error')) ?></div>
         <?php endif; ?>
 
-        <script>
-            function togglePasswordVisibility(button) {
-                const field = button.closest('.password-field');
-                if (!field) return;
-
-                const input = field.querySelector('input');
-                if (!input) return;
-
-                const isPassword = input.type === 'password';
-                input.type = isPassword ? 'text' : 'password';
-                button.textContent = isPassword ? '🙈' : '👁️';
-                button.setAttribute('aria-label', isPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe');
-            }
-        </script>
-
-        
-<!-- Jean Pierre -->
-<div class="topbar">
-      <div class="topbar-title" id="topbar-title">Tableau de bord</div>
-      <div class="topbar-actions">
-        <div class="wallet-badge" onclick="navigate('wallet', null)">
-          💰 <span class="amount">85 000 Ar</span>
-        </div>
-        <div class="gold-badge">⭐ GOLD</div>
-        <button class="btn btn-icon" onclick="showLogout()">🚪</button>
-      </div>
-    </div>
+        <script src="<?= base_url('assets/js/ui.js') ?>"></script>

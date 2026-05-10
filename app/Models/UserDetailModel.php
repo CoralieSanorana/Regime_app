@@ -27,9 +27,7 @@ class UserDetailModel extends Model
         'taille'       => ['required' => 'La taille est obligatoire', 'greater_than' => 'La taille doit être positive']
     ];
 
-    protected $useTimestamps = true;
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at'; 
+    protected $useTimestamps = false;
 
     public function getByUserId($user_id)
     {

@@ -49,6 +49,6 @@ class Inscription extends BaseController
                             ->with('validation', $userDetailsModel->errors());
         }
 
-        return redirect()->to('/login')->with('success', 'Votre compte NutriPath est prêt !');
+        return redirect()->to('/')->with('success', 'Votre compte NutriPath est prêt !');
     }
 }

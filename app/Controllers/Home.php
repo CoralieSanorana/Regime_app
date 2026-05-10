@@ -9,9 +9,6 @@ class Home extends BaseController
     public function singIn(): string
     {return view('sing_in');}
     
-    public function singUp(): string
-    {return view('sing_up');}
-
     public function login(){
         $email = $this->request->getPost('email');
         $mot_de_passe = $this->request->getPost('mot_de_passe');
@@ -34,22 +31,21 @@ class Home extends BaseController
                 return redirect()->to('/dashboard');
             }
 
-            return redirect()->to('/profil/'.$user['id']);
+            return redirect()->to('/profil');
         } else {
             return redirect()->to('/')->with('error', 'Email ou mot de passe incorrect.');
         }
     }
 
-//------------------------------------------------------------------------
-// Coralie
     public function logout(){
         session()->destroy();
         return redirect()->to('/')->with('success', 'Déconnexion réussie.');
     }
 
-    public function profil($user_id){
+    public function profil(){
         $userModel = new UsersModel();
         $userDetailsModel = new UserDetailsModel();
+        $user_id = session()->get('user_id');
         $user = $userModel->find($user_id);
         if (!$user) {
             return redirect()->to('/')->with('error', 'Utilisateur introuvable.');
@@ -189,35 +185,6 @@ class Home extends BaseController
         }
     }
 
-    public function inscription(){
-        $userModel = new UsersModel();
-
-        $nom = $this->request->getPost('nom');
-        $prenom = $this->request->getPost('prenom');
-        $genre = $this->request->getPost('genre');
-        $email = $this->request->getPost('email');
-        $adresse = $this->request->getPost('adresse');
-        $date_naissance = $this->request->getPost('date_naissance');
-        $mot_de_passe = $this->request->getPost('password');
-        $confirme_pwd = $this->request->getPost('confirme_password');
-
-        if ($mot_de_passe !== $confirme_pwd) {
-            return redirect()->back()->with('error', 'Le mot de passe et la confirmation ne correspondent pas.');
-        }
-
-        $userModel->insert([
-            'nom' => $nom,
-            'prenom' => $prenom,
-            'email' => $email,
-            'adresse' => $adresse,
-            'mot_de_passe' => $mot_de_passe,
-            'date_naissance' => $date_naissance,
-            'genre' => $genre
-        ]);
-
-        return redirect()->to('/')->with('success', 'Inscription réussie.');
-    }
-
     public function objectif($user_id){
         $userModel = new UsersModel();
         $userDetailsModel = new UserDetailsModel();
@@ -241,7 +208,7 @@ class Home extends BaseController
         $userDetails = $userDetailsModel->where('user_id', $user_id)->first();
         $currentWeight = $userDetails['poids_actuel'] ?? null;
 
-        return view('objectif', [
+        return view('regimes/objectif', [
             'user' => $user,
             'currentWeight' => $currentWeight,
         ]);
@@ -266,7 +233,7 @@ class Home extends BaseController
             'user_gold' => $user['is_gold'],
         ]);
 
-        return view('gold', [
+        return view('users/gold', [
             'user' => $user,
         ]);
     }
@@ -278,7 +245,7 @@ class Home extends BaseController
 
         if ($userRole !== 'admin') {
             if ($userId) {
-                return redirect()->to('/profil/' . $userId);
+                return redirect()->to('/profil');
             }
 
             return redirect()->to('/')->with('error', 'Accès réservé aux administrateurs.');
@@ -402,12 +369,5 @@ class Home extends BaseController
             'popularRegimes' => $popularRegimes,
             'rechargeTransactions' => $rechargeTransactions,
         ]);
-    }
-
-    // ------------------------------------------------------------
-    // Jean Pierre
-    public function main()
-    {
-        return view('main');
     }
 }

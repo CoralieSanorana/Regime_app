@@ -10,6 +10,14 @@ class Code extends BaseController
         return view('codes/index', $data);
     }
 
+    public function exportList()
+    {
+        $model = new CodeModel();
+        return view('codes/export_list', [
+            'codes' => $model->findAll(),
+        ]);
+    }
+
     public function add()
     {return view('codes/form');}
 

@@ -1,3 +1,4 @@
+<?php $page = 'Régimes'; ?>
     <?= view('header', ['activeMenu' => 'regimes']) ?>
     <?php $isEdit = isset($regime) && !empty($regime); ?>
         <div class="page active" id="pg-regimes-add">
@@ -52,3 +53,6 @@
                 </div>
             </div>
         </div>
+
+    <?= view('footer') ?>
+    

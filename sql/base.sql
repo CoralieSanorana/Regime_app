@@ -7,6 +7,7 @@ CREATE TABLE users (
     prenom VARCHAR(100) NOT NULL,
     date_naissance DATE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
+    adresse VARCHAR(250),
     mot_de_passe VARCHAR(255) NOT NULL,
     genre ENUM('M', 'F') NOT NULL,
     role ENUM('admin', 'user') DEFAULT 'user',
@@ -29,7 +30,7 @@ CREATE TABLE prix_gold (
     date_mise_a_jour TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE user_details (suffisant
+CREATE TABLE user_details (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     poids_actuel DECIMAL(5, 2) NOT NULL,
@@ -64,6 +65,7 @@ CREATE TABLE regimes (
 CREATE TABLE activites_sportives (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom_activite VARCHAR(100) NOT NULL,
+    effet_jour DECIMAL(10,2),
     description TEXT
 );
 
@@ -98,7 +100,3 @@ CREATE TABLE porte_monnaie_transactions (
     date_transaction TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
-ALTER TABLE users ADD adresse VARCHAR(250);
-
-ALTER TABLE activites_sportives ADD effet_jour DECIMAL(10,2) ;

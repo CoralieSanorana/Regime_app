@@ -1,6 +1,5 @@
 <footer class="app-footer">
     <div class="footer-line">
-        <span class="footer-date"><?= date('d F Y') ?></span>
         <span class="footer-sep">•</span>
         <span class="footer-mission">NutriPath — Votre parcours santé intelligent</span>
         <span class="footer-sep">•</span>

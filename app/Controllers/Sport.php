@@ -10,6 +10,14 @@ class Sport extends BaseController
         return view('sports/index', $data);
     }
 
+    public function exportList()
+    {
+        $model = new SportModel();
+        return view('sports/export_list', [
+            'sports' => $model->findAll(),
+        ]);
+    }
+
     public function add()
     {return view('sports/form');}
 

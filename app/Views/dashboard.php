@@ -1,5 +1,5 @@
+    <?php $page = 'Tableau de bord'; ?>
     <?= view('header', ['activeMenu' => 'dashboard']) ?>
-
     <style>
       .dashboard-hero {
         display: grid;
@@ -268,10 +268,6 @@
           <div style="color:var(--text-muted);font-size:0.88rem;">
             <?= esc($currentUser['email'] ?? '') ?>
           </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="/regimes" class="btn btn-primary btn-sm">Voir les régimes</a>
-            <a href="/codes" class="btn btn-outline btn-sm">Gérer les codes</a>
-          </div>
         </div>
       </div>
 
@@ -380,6 +376,8 @@
       </div>
     </div>
 
+    <?= view('footer') ?>
+
     <script>
       function navigate(page, el) {
         const routes = {
@@ -397,7 +395,3 @@
         }
       }
     </script>
-    </div>
-    </div>
-  </body>
-</html>

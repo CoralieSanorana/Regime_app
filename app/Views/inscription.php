@@ -7,6 +7,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
+<style>
+    .password-field { position: relative; }
+    .password-toggle {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 0;
+        background: transparent;
+        color: var(--text-muted);
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 4px;
+    }
+    .password-toggle:hover { color: var(--text); }
+    .password-field input[type="password"],
+    .password-field input[type="text"] { padding-right: 44px; }
+</style>
 </head>
 <body>
 
@@ -104,7 +123,7 @@
 
                 <button type="button" class="btn btn-primary" style="width:100%; justify-content:center;" onclick="showStep(2)">Continuer →</button>
                 <div style="text-align:center; margin-top:14px; font-size:0.82rem; color:var(--text-muted);">
-                  Déjà inscrit ? <a href="<?= base_url('/login') ?>" class="auth-link" >Se connecter</a>
+                  Déjà inscrit ? <a href="<?= base_url('/') ?>" class="auth-link" >Se connecter</a>
                 </div>
             </div>
         </div>
@@ -169,16 +188,22 @@
                 </div>
 
                 <h2>Sécurité du compte</h2>
-                <div class="form-group">
+                <div class="form-group password-field">
                     <label>Mot de passe</label>
                     <input type="password" name="mot_de_passe" class="<?= isset($validation['mot_de_passe']) ? 'input-error' : '' ?>" value="<?= old('mot_de_passe') ?>">
+                    <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)" aria-label="Afficher le mot de passe">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
                     <?php if (isset($validation['mot_de_passe'])): ?>
                         <div class="error-message"><span>⚠️</span> <?= $validation['mot_de_passe'] ?></div>
                     <?php endif; ?>
                 </div>
-                <div class="form-group">
+                <div class="form-group password-field">
                     <label>Confirmer le mot de passe</label>
                     <input type="password" name="mot_de_passe_confirmer" class="<?= isset($validation['mot_de_passe_confirmer']) ? 'input-error' : '' ?>" value="<?= old('mot_de_passe_confirmer') ?>">
+                    <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)" aria-label="Afficher le mot de passe">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
                     <?php if (isset($validation['mot_de_passe_confirmer'])): ?>
                         <div class="error-message"><span>⚠️</span> <?= $validation['mot_de_passe_confirmer'] ?></div>
                     <?php endif; ?>
@@ -192,6 +217,7 @@
         </div>
     </form>
 
+    <script src="<?= base_url('assets/js/ui.js') ?>"></script>
     <script>
         // ── NAVIGATION AUTH ──
         function showLogin() {

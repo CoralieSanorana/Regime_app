@@ -1,3 +1,4 @@
+<?php $page = 'Sports'; ?>
     <?= view('header', ['activeMenu' => 'sports']) ?>
     <?php $isEdit = isset($sport) && !empty($sport); ?>
     <div class="page active" id="pg-sport-add">
@@ -25,3 +26,4 @@
             </div>
         </div>
     </div>
+    <?= view('footer') ?>

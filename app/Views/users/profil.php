@@ -1,5 +1,5 @@
+    <?php $page = 'Mon Profil'; ?>
     <?= view('header', ['activeMenu' => 'profil']) ?>
-
 
         <!-- ──────────── PAGE: PROFIL ──────────── -->
         <div class="page active" id="pg-profil">
@@ -94,13 +94,17 @@
                     <div class="form-row">
                         <div class="form-group password-field">
                             <label>Mot de passe actuel</label>
-                            <input type="password" name="old_password" value="<?= $profil['mot_de_passe'] ?>" placeholder="••••••••">
-                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)" aria-label="Afficher le mot de passe">👁️</button>
+                            <input type="password" name="old_password" unavailable value="<?= $profil['mot_de_passe'] ?>" placeholder="••••••••">
+                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)" aria-label="Afficher le mot de passe">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
                         </div>
                         <div class="form-group password-field">
                             <label>Nouveau mot de passe</label>
                             <input type="password" name="new_password" placeholder="••••••••">
-                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)" aria-label="Afficher le mot de passe">👁️</button>
+                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)" aria-label="Afficher le mot de passe">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
                         </div>
                     </div>
                     <input type="hidden" name="id" value="<?= $profil['id'] ?>">
@@ -108,9 +112,9 @@
                 </form>
             </div>
         </div>
-
-    </div>
-    </div>
+    
+    <?= view('footer') ?>
+    
     <script>
         function navigate(page, el) {
             const pages = document.querySelectorAll('.page');
