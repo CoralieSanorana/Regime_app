@@ -1,0 +1,125 @@
+<?php $page = 'Mon Régime'; ?>
+    <?= view('header', ['activeMenu' => 'monregime']) ?>
+    <?php 
+      $regime = null;
+      $sport = null;
+      if (!empty($monRegime)) {
+        $regime = $monRegime['regime'];
+        $sport = $monRegime['sport'];
+      }
+    ?>
+    <div class="page active" id="pg-monregime">
+      <div class="page-header">
+        <h1>Mon Régime Actuel</h1>
+        <p>Détails et suivi de votre programme en cours</p>
+      </div>
+
+      <?php if (empty($monRegime)): ?>
+        <div class="card" style="padding:28px 24px;border:1px solid rgba(248,113,113,0.35);background:rgba(248,113,113,0.12);box-shadow:0 16px 40px rgba(248,113,113,0.12);">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div style="width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(248,113,113,0.18);color:#fecaca;font-size:1.5rem;flex:0 0 auto;">⚠️</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:#fecaca;margin-bottom:8px;">Aucun régime en cours</div>
+              <p style="margin:0;color:#fee2e2;font-size:1.05rem;line-height:1.6;">
+                Vous n'avez pas encore de régime en cours. Veuillez choisir vos objectifs puis consulter les suggestions pour lancer votre programme.
+              </p>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
+
+      <?php if (!empty($monRegime)): ?>
+        <div class="export-bar">
+          <div>
+            <div style="font-weight:600;margin-bottom:2px;"><?= $regime['nom_regime'] ?> · Jour <?= $monRegime['jour_actuel'] ?>/<?= $monRegime['achat']['duree_jours'] ?></div>
+            <p>Exportez votre programme complet au format PDF</p>
+          </div>
+          <a class="btn btn-primary btn-sm" href="<?= base_url('/monRegime/export') ?>" target="_blank" rel="noopener">📄 Exporter en PDF</a>
+        </div>
+        
+        <div class="grid-2 section-gap">
+          <div class="card">
+            <div class="card-title">📋 Détails du régime</div>
+            <table>
+              <tbody>
+                <tr><td style="color:var(--text-muted);width:140px;">Nom du régime</td><td><strong><?= $regime['nom_regime'] ?></strong></td></tr>
+                <tr><td style="color:var(--text-muted);">Durée</td><td><?= $monRegime['achat']['duree_jours'] ?> jours</td></tr>
+                <tr><td style="color:var(--text-muted);">Effet/jour</td><td style="color:var(--accent);"><?= $regime['poids_impact_journalier'] ?> kg</td></tr>
+                <tr><td style="color:var(--text-muted);">Prix/jour</td><td> <?= $regime['prix_journalier'] ?> Ar</td></tr>
+                <tr><td style="color:var(--text-muted);">Prix total</td><td style="color:var(--accent);font-weight:700;"><?= $monRegime['achat']['prix_total_paye'] ?> Ar</td></tr>
+                <tr><td style="color:var(--text-muted);">% Viande</td><td><span class="badge badge-red"><?= $regime['pourcentage_viande'] ?>%</span></td></tr>
+                <tr><td style="color:var(--text-muted);">% Poisson</td><td><span class="badge badge-blue"><?= $regime['pourcentage_poisson'] ?>%</span></td></tr>
+                <tr><td style="color:var(--text-muted);">% Volaille</td><td><span class="badge badge-gold"><?= $regime['pourcentage_volaille'] ?>%</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <div class="card">
+            <div class="card-title">📊 Avancement</div>
+            <div style="text-align:center;padding:20px 0;">
+              <div style="font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:var(--accent);letter-spacing:-0.05em;"><?= $monRegime['pourcentage_avancement'] ?>%</div>
+              <div style="color:var(--text-muted);margin-bottom:20px;">Jour <?= $monRegime['jour_actuel'] ?> sur <?= $monRegime['achat']['duree_jours'] ?></div>
+              <div style="background:var(--surface2);border-radius:100px;height:12px;overflow:hidden;margin-bottom:12px;">
+                <div style="width:<?= $monRegime['pourcentage_avancement'] ?>%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:100px;transition:width 1s;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--text-muted);">
+                <span>Début : <?= date('d/m/Y', strtotime($monRegime['achat']['date_achat'])) ?></span>
+                <span>Fin : <?= $monRegime['date_fin'] ?></span>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;margin-top:12px;">
+              <div style="flex:1;text-align:center;padding:14px;background:var(--surface2);border-radius:10px;">
+                <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--accent);"><?= number_format($monRegime['achat']['poids_depart'], 1) ?>kg</div>
+                <div style="font-size:0.72rem;color:var(--text-muted);">Poids de départ</div>
+              </div>
+              <div style="flex:1;text-align:center;padding:14px;background:var(--surface2);border-radius:10px;">
+                <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--info);"><?= number_format($monRegime['poids_estime'], 1) ?>kg</div>
+                <div style="font-size:0.72rem;color:var(--text-muted);">Poids estimé actuel</div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="grid-2 section-gap" style="margin-top:24px;">
+          <div class="card">
+            <div class="card-title">🏃 Activité Sportive</div>
+            <table>
+              <tbody>
+                <tr><td style="color:var(--text-muted);width:140px;">Nom de l'activité</td><td><strong><?= $sport['nom_activite'] ?? 'Non défini' ?></strong></td></tr>
+                <tr><td style="color:var(--text-muted);">Description</td><td><?= $sport['description'] ?? 'Aucune description' ?></td></tr>
+                <tr><td style="color:var(--text-muted);">Effet/jour</td><td style="color:var(--accent);"><?= $sport['poids_impact_journalier'] ?? 0 ?> kg</td></tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <div class="card">
+            <div class="card-title">⚖️ Récapitulatif Poids</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 0;">
+              <div style="text-align:center;padding:16px;background:var(--surface2);border-radius:10px;">
+                <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:8px;">Poids de départ</div>
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--accent);"><?= number_format($monRegime['achat']['poids_depart'], 1) ?></div>
+                <div style="color:var(--text-muted);font-size:0.75rem;margin-top:4px;">kg</div>
+              </div>
+              <div style="text-align:center;padding:16px;background:var(--surface2);border-radius:10px;">
+                <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:8px;">Poids estimé actuel</div>
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--info);"><?= number_format($monRegime['poids_estime'], 1) ?></div>
+                <div style="color:var(--text-muted);font-size:0.75rem;margin-top:4px;">kg</div>
+              </div>
+              <div style="text-align:center;padding:16px;background:var(--surface2);border-radius:10px;">
+                <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:8px;">Objectif</div>
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--success);"><?= number_format($monRegime['achat']['poids_objectif'], 1) ?></div>
+                <div style="color:var(--text-muted);font-size:0.75rem;margin-top:4px;">kg</div>
+              </div>
+              <div style="text-align:center;padding:16px;background:var(--surface2);border-radius:10px;">
+                <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:8px;">À <?= $monRegime['achat']['poids_depart'] > $monRegime['achat']['poids_objectif'] ? 'perdre' : 'gagner' ?></div>
+                <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--warning);"><?= number_format(abs($monRegime['achat']['poids_depart'] - $monRegime['achat']['poids_objectif']), 1) ?></div>
+                <div style="color:var(--text-muted);font-size:0.75rem;margin-top:4px;">kg</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
+
+    </div>
+
+    <?= view('footer') ?>

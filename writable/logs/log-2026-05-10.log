@@ -1,0 +1,741 @@
+ERROR - 2026-05-10 08:04:12 --> Cannot add or update a child row: a foreign key constraint fails (`regime_db`.`user_objectifs`, CONSTRAINT `user_objectifs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE)
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(300): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 7 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+ 8 APPPATH/Controllers/Objectif.php(33): CodeIgniter\Model->insert()
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Objectif->save()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+15 SYSTEMPATH/rewrite.php(44): require_once('/home/jean/Bureau/L2/S4/Systeme d\'information/Regime/Regime_app/public/index.php')
+CRITICAL - 2026-05-10 08:04:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`regime_db`.`user_objectifs`, CONSTRAINT `user_objectifs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE)
+[Method: POST, Route: regime/save]
+in SYSTEMPATH/Database/BaseConnection.php on line 865.
+ 1 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 2 SYSTEMPATH/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 4 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+ 5 APPPATH/Controllers/Objectif.php(33): CodeIgniter\Model->insert()
+ 6 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Objectif->save()
+ 7 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/jean/Bureau/L2/S4/Systeme d\'information/Regime/Regime_app/public/index.php')
+CRITICAL - 2026-05-10 08:04:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`regime_db`.`user_objectifs`, CONSTRAINT `user_objectifs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE)
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 310.
+ 1 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute()
+ 2 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 6 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+ 7 APPPATH/Controllers/Objectif.php(33): CodeIgniter\Model->insert()
+ 8 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Objectif->save()
+ 9 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+11 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+13 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+14 SYSTEMPATH/rewrite.php(44): require_once('/home/jean/Bureau/L2/S4/Systeme d\'information/Regime/Regime_app/public/index.php')
+CRITICAL - 2026-05-10 08:04:12 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`regime_db`.`user_objectifs`, CONSTRAINT `user_objectifs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE)
+in SYSTEMPATH/Database/MySQLi/Connection.php on line 300.
+ 1 SYSTEMPATH/Database/MySQLi/Connection.php(300): mysqli->query()
+ 2 SYSTEMPATH/Database/BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH/Database/BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH/Database/BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH/Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH/BaseModel.php(899): CodeIgniter\Model->doInsert()
+ 7 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+ 8 APPPATH/Controllers/Objectif.php(33): CodeIgniter\Model->insert()
+ 9 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Objectif->save()
+10 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+12 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+14 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+15 SYSTEMPATH/rewrite.php(44): require_once('/home/jean/Bureau/L2/S4/Systeme d\'information/Regime/Regime_app/public/index.php')
+ERROR - 2026-05-10 16:59:46 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'regime_db', 3306, '', 0)
+#1 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\app\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+#7 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(951): App\Controllers\Home->login()
+#8 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\app\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+#6 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(951): App\Controllers\Home->login()
+#7 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-05-10 16:59:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: POST, Route: singIn]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->login()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-05-10 17:05:16 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('127.0.0.1', 'root', Object(SensitiveParameterValue), 'regime_db', 3306, '', 0)
+#1 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\app\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+#7 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(951): App\Controllers\Home->login()
+#8 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\app\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+#6 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(951): App\Controllers\Home->login()
+#7 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-05-10 17:05:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: POST, Route: singIn]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->login()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-05-10 17:06:31 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'regime_db', 3306, '', 0)
+#1 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\app\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+#7 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(951): App\Controllers\Home->login()
+#8 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\app\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+#6 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(951): App\Controllers\Home->login()
+#7 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-05-10 17:06:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: POST, Route: singIn]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Home.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->login()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-05-10 17:14:19 --> Table 'regime_db.objectifs' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `objectifs`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `objectifs`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `objectifs`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `objectifs`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Objectif.php(17): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:14:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'regime_db.objectifs' doesn't exist
+[Method: GET, Route: objectif]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `objectifs`', [], false)
+ 2 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\Objectif.php(17): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:14:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'regime_db.objectifs' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `objectifs`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `objectifs`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `objectifs`', [], false)
+ 4 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\Objectif.php(17): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:14:19 --> [Caused by] mysqli_sql_exception: Table 'regime_db.objectifs' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `objectifs`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `objectifs`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `objectifs`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `objectifs`', [], false)
+ 5 SYSTEMPATH\Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Objectif.php(17): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:18:46 --> ErrorException: Undefined variable $activeMenu
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 83.
+ 1 APPPATH\Views\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $activeMenu', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(18): view('header')
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:18:51 --> ErrorException: Undefined variable $activeMenu
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 83.
+ 1 APPPATH\Views\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $activeMenu', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(18): view('header')
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:23:55 --> ErrorException: Undefined variable $activeMenu
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 83.
+ 1 APPPATH\Views\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $activeMenu', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(18): view('header')
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:23:57 --> ErrorException: Undefined variable $activeMenu
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 83.
+ 1 APPPATH\Views\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $activeMenu', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(18): view('header')
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:23:57 --> ErrorException: Undefined variable $activeMenu
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 83.
+ 1 APPPATH\Views\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $activeMenu', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(18): view('header')
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:24:10 --> ErrorException: Undefined variable $activeMenu
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 83.
+ 1 APPPATH\Views\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $activeMenu', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(18): view('header')
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:24:42 --> ErrorException: Undefined variable $activeMenu
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 83.
+ 1 APPPATH\Views\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $activeMenu', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(18): view('header')
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:27:28 --> ErrorException: Undefined variable $activeMenu
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 83.
+ 1 APPPATH\Views\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $activeMenu', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(18): view('header')
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:33:09 --> ErrorException: Undefined variable $page
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 117.
+ 1 APPPATH\Views\header.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 117)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(1): view('header', [...])
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:33:10 --> ErrorException: Undefined variable $page
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 117.
+ 1 APPPATH\Views\header.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 117)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(1): view('header', [...])
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:35:55 --> ErrorException: Undefined variable $page
+[Method: GET, Route: objectif]
+in APPPATH\Views\header.php on line 117.
+ 1 APPPATH\Views\header.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 117)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\objectif.php(1): view('header', [...])
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\objectif.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('objectif', [], true)
+ 9 APPPATH\Controllers\Objectif.php(20): view('regimes/objectif', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Objectif->index()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Objectif))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:35:57 --> ErrorException: Undefined variable $page
+[Method: GET, Route: profil]
+in APPPATH\Views\header.php on line 117.
+ 1 APPPATH\Views\header.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 117)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\users\profil.php(1): view('header', [...])
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\users\\profil.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('users/profil', [], true)
+ 9 APPPATH\Controllers\Home.php(96): view('users/profil', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->profil()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:36:01 --> ErrorException: Undefined variable $page
+[Method: GET, Route: profil]
+in APPPATH\Views\header.php on line 117.
+ 1 APPPATH\Views\header.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 117)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\users\profil.php(1): view('header', [...])
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\users\\profil.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('users/profil', [], true)
+ 9 APPPATH\Controllers\Home.php(96): view('users/profil', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->profil()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:36:42 --> ErrorException: Undefined variable $page
+[Method: GET, Route: profil]
+in APPPATH\Views\header.php on line 117.
+ 1 APPPATH\Views\header.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 117)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\users\profil.php(1): view('header', [...])
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\users\\profil.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('users/profil', [], true)
+ 9 APPPATH\Controllers\Home.php(96): view('users/profil', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->profil()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:36:43 --> ErrorException: Undefined variable $page
+[Method: GET, Route: profil]
+in APPPATH\Views\header.php on line 117.
+ 1 APPPATH\Views\header.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php', 117)
+ 2 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\header.php')
+ 3 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('header', [], true)
+ 5 APPPATH\Views\users\profil.php(1): view('header', [...])
+ 6 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\users\\profil.php')
+ 7 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('users/profil', [], true)
+ 9 APPPATH\Controllers\Home.php(96): view('users/profil', [...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->profil()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-05-10 17:44:38 --> Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `solde_monnaie` = 0, `updated_at` = \'2026-05-10 17:44:38\'
+WHERE `users`.`id` IN (\'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `solde_monnaie` = 0, `updated_at` = \'2026-05-10 17:44:38\'
+WHERE `users`.`id` IN (\'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `solde_monnaie` = 0, `updated_at` = \'2026-05-10 17:44:38\'
+WHERE `users`.`id` IN (\'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `solde_monnaie` = :solde_monnaie:, `updated_at` = :updated_at:
+WHERE `users`.`id` IN :users.id:', [...], false)
+ 5 SYSTEMPATH\Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\Gold.php(36): CodeIgniter\Model->update('3', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Gold->activate()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gold))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:44:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+[Method: POST, Route: gold/activate]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `solde_monnaie` = :solde_monnaie:, `updated_at` = :updated_at:
+WHERE `users`.`id` IN :users.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\Gold.php(36): CodeIgniter\Model->update('3', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Gold->activate()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gold))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:44:38 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `solde_monnaie` = 0, `updated_at` = \'2026-05-10 17:44:38\'
+WHERE `users`.`id` IN (\'3\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `solde_monnaie` = 0, `updated_at` = \'2026-05-10 17:44:38\'
+WHERE `users`.`id` IN (\'3\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `solde_monnaie` = :solde_monnaie:, `updated_at` = :updated_at:
+WHERE `users`.`id` IN :users.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 7 APPPATH\Controllers\Gold.php(36): CodeIgniter\Model->update('3', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Gold->activate()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gold))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:44:38 --> [Caused by] mysqli_sql_exception: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `users` SET `solde_monnaie` = 0, `updated_at` = \'2026-05-10 17:44:38\'
+WHERE `users`.`id` IN (\'3\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `solde_monnaie` = 0, `updated_at` = \'2026-05-10 17:44:38\'
+WHERE `users`.`id` IN (\'3\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `solde_monnaie` = 0, `updated_at` = \'2026-05-10 17:44:38\'
+WHERE `users`.`id` IN (\'3\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `solde_monnaie` = :solde_monnaie:, `updated_at` = :updated_at:
+WHERE `users`.`id` IN :users.id:', [...], false)
+ 5 SYSTEMPATH\Model.php(406): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1074): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(709): CodeIgniter\BaseModel->update([...], [...])
+ 8 APPPATH\Controllers\Gold.php(36): CodeIgniter\Model->update('3', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Gold->activate()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gold))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:47:03 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "footer.php"
+[Method: GET, Route: gold]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('footer.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('footer', [], true)
+ 3 APPPATH\Views\gold.php(65): view('footer')
+ 4 SYSTEMPATH\View\View.php(240): include('D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Views\\gold.php')
+ 5 SYSTEMPATH\View\View.php(243): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('gold', [], true)
+ 7 APPPATH\Controllers\Gold.php(22): view('users/gold', [...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Gold->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Gold))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-05-10 17:50:03 --> Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (\'Coralie\', \'RAKOTOMALALA\', \'F\', \'2005-12-18\', \'coralie.rakotomalala@gmail.com\', \'$2y$10$ZAVcB516KU59sCBu.rbgLeWmzlhn6iuvtGmrVYFQn2TdYAaac4tA6\', \'user\', 0, 0, \'2026-05-10 17:50:03\', \'2026-05-10 17:50:03\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (\'Coralie\', \'RAKOTOMALALA\', \'F\', \'2005-12-18\', \'coralie.rakotomalala@gmail.com\', \'$2y$10$ZAVcB516KU59sCBu.rbgLeWmzlhn6iuvtGmrVYFQn2TdYAaac4tA6\', \'user\', 0, 0, \'2026-05-10 17:50:03\', \'2026-05-10 17:50:03\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (\'Coralie\', \'RAKOTOMALALA\', \'F\', \'2005-12-18\', \'coralie.rakotomalala@gmail.com\', \'$2y$10$ZAVcB516KU59sCBu.rbgLeWmzlhn6iuvtGmrVYFQn2TdYAaac4tA6\', \'user\', 0, 0, \'2026-05-10 17:50:03\', \'2026-05-10 17:50:03\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (:prenom:, :nom:, :genre:, :date_naissance:, :email:, :mot_de_passe:, :role:, :is_gold:, :solde_monnaie:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Inscription.php(28): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Inscription->save()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inscription))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:50:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+[Method: POST, Route: inscription/save]
+in SYSTEMPATH\Database\BaseConnection.php on line 865.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (:prenom:, :nom:, :genre:, :date_naissance:, :email:, :mot_de_passe:, :role:, :is_gold:, :solde_monnaie:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Inscription.php(28): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Inscription->save()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inscription))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:50:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (\'Coralie\', \'RAKOTOMALALA\', \'F\', \'2005-12-18\', \'coralie.rakotomalala@gmail.com\', \'$2y$10$ZAVcB516KU59sCBu.rbgLeWmzlhn6iuvtGmrVYFQn2TdYAaac4tA6\', \'user\', 0, 0, \'2026-05-10 17:50:03\', \'2026-05-10 17:50:03\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (\'Coralie\', \'RAKOTOMALALA\', \'F\', \'2005-12-18\', \'coralie.rakotomalala@gmail.com\', \'$2y$10$ZAVcB516KU59sCBu.rbgLeWmzlhn6iuvtGmrVYFQn2TdYAaac4tA6\', \'user\', 0, 0, \'2026-05-10 17:50:03\', \'2026-05-10 17:50:03\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (:prenom:, :nom:, :genre:, :date_naissance:, :email:, :mot_de_passe:, :role:, :is_gold:, :solde_monnaie:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Inscription.php(28): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Inscription->save()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inscription))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 17:50:03 --> [Caused by] mysqli_sql_exception: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (\'Coralie\', \'RAKOTOMALALA\', \'F\', \'2005-12-18\', \'coralie.rakotomalala@gmail.com\', \'$2y$10$ZAVcB516KU59sCBu.rbgLeWmzlhn6iuvtGmrVYFQn2TdYAaac4tA6\', \'user\', 0, 0, \'2026-05-10 17:50:03\', \'2026-05-10 17:50:03\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (\'Coralie\', \'RAKOTOMALALA\', \'F\', \'2005-12-18\', \'coralie.rakotomalala@gmail.com\', \'$2y$10$ZAVcB516KU59sCBu.rbgLeWmzlhn6iuvtGmrVYFQn2TdYAaac4tA6\', \'user\', 0, 0, \'2026-05-10 17:50:03\', \'2026-05-10 17:50:03\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (\'Coralie\', \'RAKOTOMALALA\', \'F\', \'2005-12-18\', \'coralie.rakotomalala@gmail.com\', \'$2y$10$ZAVcB516KU59sCBu.rbgLeWmzlhn6iuvtGmrVYFQn2TdYAaac4tA6\', \'user\', 0, 0, \'2026-05-10 17:50:03\', \'2026-05-10 17:50:03\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`prenom`, `nom`, `genre`, `date_naissance`, `email`, `mot_de_passe`, `role`, `is_gold`, `solde_monnaie`, `created_at`, `updated_at`) VALUES (:prenom:, :nom:, :genre:, :date_naissance:, :email:, :mot_de_passe:, :role:, :is_gold:, :solde_monnaie:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Inscription.php(28): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Inscription->save()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Inscription))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 19:39:27 --> Error: Class "App\Controllers\TransactionModel" not found
+[Method: POST, Route: regimes/achat]
+in APPPATH\Controllers\RegimeController.php on line 189.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegimeController->acheterRegime()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegimeController))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 20:02:12 --> Error: Class "App\Controllers\TransactionModel" not found
+[Method: POST, Route: regimes/achat]
+in APPPATH\Controllers\RegimeController.php on line 106.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegimeController->acheterRegime()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegimeController))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 20:09:00 --> Error: Call to undefined method App\Controllers\Home::refreshSessionUserData()
+[Method: POST, Route: regimes/achat]
+in APPPATH\Controllers\RegimeController.php on line 168.
+ 1 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegimeController->acheterRegime()
+ 2 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegimeController))
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-10 20:11:52 --> ErrorException: Undefined array key "poids_impact_journalier"
+[Method: GET, Route: monRegime]
+in APPPATH\Controllers\RegimeController.php on line 312.
+ 1 APPPATH\Controllers\RegimeController.php(312): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "poids_impact_journalier"', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\app\\Controllers\\RegimeController.php', 312)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegimeController->monRegime()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegimeController))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

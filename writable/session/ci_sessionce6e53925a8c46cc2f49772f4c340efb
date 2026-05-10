@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1778445394;_ci_previous_url|s:51:"http://localhost:3000/index.php/regimes/suggestions";user_id|s:1:"4";user_role|s:4:"user";user_nom|s:5:"Miora";user_prenom|s:0:"";user_email|s:17:"miora@example.com";user_solde|s:4:"0.00";user_gold|s:1:"0";error|s:42:"Solde insuffisant pour acheter ce régime.";__ci_vars|a:1:{s:5:"error";s:3:"old";}

@@ -7,12 +7,27 @@ CREATE TABLE users (
     prenom VARCHAR(100) NOT NULL,
     date_naissance DATE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
+    adresse VARCHAR(250),
     mot_de_passe VARCHAR(255) NOT NULL,
     genre ENUM('M', 'F') NOT NULL,
     role ENUM('admin', 'user') DEFAULT 'user',
     is_gold BOOLEAN DEFAULT FALSE, 
     solde_monnaie DECIMAL(10, 2) DEFAULT 0.00,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE objectifs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    libelle VARCHAR(100) NOT NULL,
+    image_url VARCHAR(255),
+    description TEXT
+);
+
+CREATE TABLE prix_gold (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    prix DECIMAL(10, 2) NOT NULL,
+    date_mise_a_jour TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE user_details (
@@ -20,8 +35,19 @@ CREATE TABLE user_details (
     user_id INT NOT NULL,
     poids_actuel DECIMAL(5, 2) NOT NULL,
     taille DECIMAL(5, 2) NOT NULL,
-    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE user_objectifs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    objectif_id INT NOT NULL,
+    poids_cible INT NOT NULL,
+    date_selection TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE CASCADE
 );
 
 CREATE TABLE regimes (
@@ -39,6 +65,7 @@ CREATE TABLE regimes (
 CREATE TABLE activites_sportives (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom_activite VARCHAR(100) NOT NULL,
+    effet_jour DECIMAL(10,2),
     description TEXT
 );
 
