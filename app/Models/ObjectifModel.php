@@ -13,4 +13,9 @@ class ObjectifModel extends Model
         'libelle' , 'image_url' , 'description'
     ];
 
+    public function getByLibelle($libelle)
+    {
+        return $this->where('libelle', $libelle)->first();
+    }
+
 }

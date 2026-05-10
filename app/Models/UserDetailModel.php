@@ -30,4 +30,9 @@ class UserDetailModel extends Model
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at'; 
+
+    public function getByUserId($user_id)
+    {
+        return $this->where('user_id', $user_id)->first();
+    }
 }

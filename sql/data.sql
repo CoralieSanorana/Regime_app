@@ -16,7 +16,7 @@ INSERT INTO regimes (nom_regime, pourcentage_viande, pourcentage_poisson, pource
 ('Force & Muscle', 60, 10, 30, 0.200, 7500),
 ('Équilibre Vert', 20, 40, 40, -0.100, 4500),
 ('Turbo Perte', 0, 50, 50, -0.500, 8000),
-('Maintien Vital', 33, 33, 34, 0.000, 4000);
+('Maintien Vital', 33, 33, 34, 0.000, 4000);    
 
 -- 5 Activités Sportives
 INSERT INTO activites_sportives (nom_activite) VALUES 

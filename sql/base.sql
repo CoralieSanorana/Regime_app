@@ -33,6 +33,16 @@ CREATE TABLE user_details (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+CREATE TABLE user_objectifs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    objectif_id INT NOT NULL,
+    poids_cible INT NOT NULL,
+    date_selection TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (objectif_id) REFERENCES objectifs(id) ON DELETE CASCADE
+);
+
 CREATE TABLE regimes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom_regime VARCHAR(100) NOT NULL,

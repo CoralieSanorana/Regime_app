@@ -1172,7 +1172,7 @@
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
             <div class="form-group">
               <label>Poids actuel (kg)</label>
-              <input type="number" name="poids_actuel" value="70" readonly style="opacity:0.6;"> 
+              <input type="number" name="poids_actuel" value="<?php if(!empty($poids_actuel)) echo $poids_actuel; ?>" readonly style="opacity:0.6;"> 
               <!-- la valeur de poids est changer par l'user actif -->
             </div>
             <div class="form-group">
@@ -1185,7 +1185,7 @@
             📊 Différence à combler : <strong style="color:var(--accent);">−5 kg</strong> &nbsp;·&nbsp;
             Durée estimée : <strong style="color:var(--info);">~30 à 45 jours</strong>
           </div>
-          <button class="btn btn-primary" onclick="navigate('suggestions', null); showNotif('Objectif défini ! Voici vos suggestions personnalisées.')">
+          <button class="btn btn-primary" onclick="navigateToRegime()">
             Voir mes suggestions →
           </button>
         </div>
@@ -1201,37 +1201,9 @@
 </div>
 
 <script>
-  // ── SELECTION ──
-  let objectSelectionner = null;
-  function selectObj(el, name) {
-    document.querySelectorAll('.obj-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-    showNotif("🎯 Objectif choisi : " + name);
-
-    objectSelectionner = name;
-    console.log("Objectif sélectionné :", objectSelectionner);
-  }
-
-
-
-  // ── TOAST ──
-  let toastTimer;
-  function showNotif(msg) {
-    const toast = document.getElementById('toast');
-    document.getElementById('toast-msg').textContent = msg;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
-  }
-
-  function navigate(page, el) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('pg-' + page).classList.add('active');
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    if (el) el.classList.add('active');
-    document.getElementById('topbar-title').textContent = titles[page] || '';
-  }
+    const BASE_URL = "<?= base_url(); ?>";
 </script>
+<script src="<?= base_url('assets/js/objectif.js') ?>"></script>
 
 </body>
 </html>
