@@ -11,3 +11,5 @@ $routes->post('/inscription/save','Inscription::save');
 $routes->get('/main', 'Home::main');
 $routes->get('/objectif', 'Objectif::index');
 $routes->post('/regime/save', 'Objectif::save');
+$routes->get('/gold', 'Gold::index');
+$routes->post('/gold/activate', 'Gold::activate');
