@@ -202,3 +202,53 @@ in SYSTEMPATH\Router\Router.php on line 463.
  7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-05-11 14:53:33 --> Error connecting to the database: mysqli_sql_exception: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'regime_db', 3306, '', 0)
+#1 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\app\Controllers\Home.php(16): CodeIgniter\BaseModel->first()
+#7 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(951): App\Controllers\Home->login()
+#8 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée in D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\app\Controllers\Home.php(16): CodeIgniter\BaseModel->first()
+#6 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(951): App\Controllers\Home->login()
+#7 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 D:\ITU\S4\Systeme d'information\2026-05-06\Regime_app\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-05-11 14:53:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
+[Method: POST, Route: singIn]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Home.php(16): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->login()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
