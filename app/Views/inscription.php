@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NutriPath — Votre parcours santé</title>
+<title>IT-enForme — Votre parcours santé</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/neon-theme.css') ?>">
 <style>
     .password-field { position: relative; }
     .password-toggle {
@@ -29,6 +31,8 @@
 </head>
 <body>
 
+<canvas id="bg"></canvas>
+
 <?php
     $validation = session('validation') ?? [];
     
@@ -49,12 +53,12 @@
         <!-- ══════════════════════════════════ -->
         <div class="auth-shell <?= $activeStep === 'page-register1' ? 'active' : '' ?>" id="page-register1">
             <div class="auth-visual">
-                <div class="auth-visual-brand">🌿 NutriPath</div>
+                <div class="auth-visual-brand"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#activity') ?>"></use></svg> IT-enForme</div>
                 <p>Rejoignez des milliers d'utilisateurs qui ont transformé leur alimentation et leur corps.</p>
                 <div class="auth-features">
-                    <div class="auth-feature"><div class="auth-feature-icon">✅</div><span>Inscription gratuite</span></div>
-                    <div class="auth-feature"><div class="auth-feature-icon">🔒</div><span>Vos données restent privées</span></div>
-                    <div class="auth-feature"><div class="auth-feature-icon">⚡</div><span>Résultats dès le premier jour</span></div>
+                    <div class="auth-feature"><div class="auth-feature-icon"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#check2-circle') ?>"></use></svg></div><span>Inscription gratuite</span></div>
+                    <div class="auth-feature"><div class="auth-feature-icon"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#shield-lock') ?>"></use></svg></div><span>Vos données restent privées</span></div>
+                    <div class="auth-feature"><div class="auth-feature-icon"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#lightning-charge') ?>"></use></svg></div><span>Résultats dès le premier jour</span></div>
                 </div>
             </div>
             <div class="auth-form-wrap">
@@ -133,7 +137,7 @@
         <!-- ══════════════════════════════════ -->
         <div class="auth-shell <?= $activeStep === 'page-register2' ? 'active' : '' ?>" id="page-register2">
             <div class="auth-visual">
-                <div class="auth-visual-brand">🌿 NutriPath</div>
+                <div class="auth-visual-brand"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#activity') ?>"></use></svg> IT-enForme</div>
                 <p>Ces informations nous permettent de calculer votre IMC et de vous proposer les meilleurs régimes.</p>
             </div>
             <div class="auth-form-wrap">
@@ -175,7 +179,7 @@
         <!-- ══════════════════════════════════ -->
         <div class="auth-shell <?= $activeStep === 'page-register3' ? 'active' : '' ?>" id="page-register3">
             <div class="auth-visual">
-                <div class="auth-visual-brand">🌿 NutriPath</div>
+                <div class="auth-visual-brand"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#activity') ?>"></use></svg> IT-enForme</div>
                 <p>Choisissez un mot de passe sécurisé pour protéger votre compte.</p>
             </div>
             <div class="auth-form-wrap">
@@ -217,6 +221,7 @@
         </div>
     </form>
 
+    <script src="<?= base_url('assets/js/neon-bg.js') ?>"></script>
     <script src="<?= base_url('assets/js/ui.js') ?>"></script>
     <script src="<?= base_url('assets/js/inscription.js') ?>"></script>
 </body>

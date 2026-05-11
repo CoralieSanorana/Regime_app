@@ -17,7 +17,7 @@
       <?php if (empty($monRegime)): ?>
         <div class="card" style="padding:28px 24px;border:1px solid rgba(248,113,113,0.35);background:rgba(248,113,113,0.12);box-shadow:0 16px 40px rgba(248,113,113,0.12);">
           <div style="display:flex;align-items:flex-start;gap:14px;">
-            <div style="width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(248,113,113,0.18);color:#fecaca;font-size:1.5rem;flex:0 0 auto;">⚠️</div>
+            <div style="width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(248,113,113,0.18);color:#fecaca;font-size:1.5rem;flex:0 0 auto;"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#exclamation-triangle') ?>"></use></svg></div>
             <div>
               <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:#fecaca;margin-bottom:8px;">Aucun régime en cours</div>
               <p style="margin:0;color:#fee2e2;font-size:1.05rem;line-height:1.6;">
@@ -34,12 +34,12 @@
             <div style="font-weight:600;margin-bottom:2px;"><?= $regime['nom_regime'] ?> · Jour <?= $monRegime['jour_actuel'] ?>/<?= $monRegime['achat']['duree_jours'] ?></div>
             <p>Exportez votre programme complet au format PDF</p>
           </div>
-          <a class="btn btn-primary btn-sm" href="<?= base_url('/monRegime/export') ?>" target="_blank" rel="noopener">📄 Exporter en PDF</a>
+          <a class="btn btn-primary btn-sm" href="<?= base_url('/monRegime/export') ?>" target="_blank" rel="noopener"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#filetype-pdf') ?>"></use></svg> Exporter en PDF</a>
         </div>
         
         <div class="grid-2 section-gap">
           <div class="card">
-            <div class="card-title">📋 Détails du régime</div>
+            <div class="card-title"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#clipboard2-check') ?>"></use></svg> Détails du régime</div>
             <table>
               <tbody>
                 <tr><td style="color:var(--text-muted);width:140px;">Nom du régime</td><td><strong><?= $regime['nom_regime'] ?></strong></td></tr>
@@ -55,7 +55,7 @@
           </div>
   
           <div class="card">
-            <div class="card-title">📊 Avancement</div>
+            <div class="card-title"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#bar-chart') ?>"></use></svg> Avancement</div>
             <div style="text-align:center;padding:20px 0;">
               <div style="font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:var(--accent);letter-spacing:-0.05em;"><?= $monRegime['pourcentage_avancement'] ?>%</div>
               <div style="color:var(--text-muted);margin-bottom:20px;">Jour <?= $monRegime['jour_actuel'] ?> sur <?= $monRegime['achat']['duree_jours'] ?></div>
@@ -82,7 +82,7 @@
   
         <div class="grid-2 section-gap" style="margin-top:24px;">
           <div class="card">
-            <div class="card-title">🏃 Activité Sportive</div>
+            <div class="card-title"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#activity') ?>"></use></svg> Activité Sportive</div>
             <table>
               <tbody>
                 <tr><td style="color:var(--text-muted);width:140px;">Nom de l'activité</td><td><strong><?= $sport['nom_activite'] ?? 'Non défini' ?></strong></td></tr>
@@ -93,7 +93,7 @@
           </div>
   
           <div class="card">
-            <div class="card-title">⚖️ Récapitulatif Poids</div>
+            <div class="card-title"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#speedometer2') ?>"></use></svg> Récapitulatif Poids</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 0;">
               <div style="text-align:center;padding:16px;background:var(--surface2);border-radius:10px;">
                 <div style="color:var(--text-muted);font-size:0.85rem;margin-bottom:8px;">Poids de départ</div>

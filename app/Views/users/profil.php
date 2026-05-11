@@ -11,7 +11,7 @@
             <div class="grid-2 section-gap">
                 <div class="card">
                     <form action="/user/update" method="post">
-                        <div class="card-title">👤 Informations personnelles</div>
+                        <div class="card-title"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#person') ?>"></use></svg> Informations personnelles</div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Prénom</label>
@@ -35,14 +35,14 @@
                             <input type="text" name="adresse" value="<?= $profil['adresse'] ?>">
                         </div>
                         <input type="hidden" name="id" value="<?= $profil['id'] ?>">
-                        <input type="submit" class="btn btn-primary btn-sm" value="💾 Update">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Update">
                     </form>
                 </div>
 
                 <div>
                     <div class="card section-gap">
                         <form action="/userDetails/update" method="post">
-                            <div class="card-title">🏥 Informations de santé</div>
+                            <div class="card-title"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#heart-pulse') ?>"></use></svg> Informations de santé</div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label>Genre</label>
@@ -62,7 +62,7 @@
                             </div>
                             <input type="hidden" name="details_id" value="<?= $profil['details_id'] ?>">
                             <input type="hidden" name="id" value="<?= $profil['id'] ?>">
-                            <input type="submit" class="btn btn-primary btn-sm" value="💾 Update">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Update">
                         </form>
                     </div>
 
@@ -84,7 +84,7 @@
                             <!-- Infos IMC -->
                             <div class="imc-info">
                                 <h3 id="imc-category" style="margin: 0 0 8px 0; font-size: 1.2rem; color: white;">Poids Normal</h3>
-                                <div class="imc-status" id="imc-status" style="font-size: 0.92rem; margin-bottom: 8px; color: #4ade80;">✓ IMC Sain</div>
+                                <div class="imc-status" id="imc-status" style="font-size: 0.92rem; margin-bottom: 8px; color: #4ade80;"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#check2-circle') ?>"></use></svg> IMC Sain</div>
                                 <div id="imc-description" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">IMC idéal : 18.5 – 24.9<br>Votre IMC est dans la zone saine.</div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
             </div>
 
             <div class="card">
-                <div class="card-title">🔒 Sécurité</div>
+                <div class="card-title"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#shield-lock') ?>"></use></svg> Sécurité</div>
                 <form action="/user/update/pwd" method="post">
                     <div class="form-row">
                         <div class="form-group password-field">
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="id" value="<?= $profil['id'] ?>">
-                    <input type="submit" class="btn btn-outline btn-sm" value="🔑 Changer le mot de passe">
+                    <input type="submit" class="btn btn-outline btn-sm" value="Changer le mot de passe">
                 </form>
             </div>
         </div>

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/neon-theme.css') ?>">
     <style>
         .password-field { position: relative; }
         .password-toggle {
@@ -44,31 +46,32 @@
     </style>
 </head>
 <body>
+    <canvas id="bg"></canvas>
     <div class="auth-shell active" id="page-login">
         <div class="auth-visual">
-            <div class="auth-visual-brand">🌿 NutriPath</div>
+            <div class="auth-visual-brand"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#activity') ?>"></use></svg> IT-enForme</div>
             <p>Atteignez vos objectifs santé avec un régime alimentaire personnalisé, conçu pour vous.</p>
             <div class="auth-features">
             <div class="auth-feature">
-                <div class="auth-feature-icon">📊</div>
+                <div class="auth-feature-icon"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#bar-chart') ?>"></use></svg></div>
                 <span>Calcul automatique de votre IMC</span>
             </div>
             <div class="auth-feature">
-                <div class="auth-feature-icon">🥗</div>
+                <div class="auth-feature-icon"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#egg-fried') ?>"></use></svg></div>
                 <span>Régimes personnalisés selon vos objectifs</span>
             </div>
             <div class="auth-feature">
-                <div class="auth-feature-icon">🏃</div>
+                <div class="auth-feature-icon"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#activity') ?>"></use></svg></div>
                 <span>Plans sportifs adaptés à votre profil</span>
             </div>
             <div class="auth-feature">
-                <div class="auth-feature-icon">📄</div>
+                <div class="auth-feature-icon"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#filetype-pdf') ?>"></use></svg></div>
                 <span>Export PDF de votre programme</span>
             </div>
             </div>
         </div>
         <div class="auth-form-wrap">
-            <h2>Bon retour 👋</h2>
+            <h2>Bon retour</h2>
             <p class="auth-subtitle">Connectez-vous pour accéder à votre espace santé.</p>
             <span class="auth-subtitle">admin@example.com (admin)</span>
 
@@ -102,6 +105,7 @@
         </div>
     </div>
 
+    <script src="<?= base_url('assets/js/neon-bg.js') ?>"></script>
     <script src="<?= base_url('assets/js/ui.js') ?>"></script>
 </body>
 </html>

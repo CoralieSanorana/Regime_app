@@ -24,7 +24,7 @@
   <div class="sheet">
     <div class="head">
       <div>
-        <div class="brand">NutriPath</div>
+        <div class="brand">IT-enForme</div>
         <div style="color:#475569;margin-top:4px;">Liste complète des sports</div>
       </div>
       <div class="meta">

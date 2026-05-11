@@ -28,7 +28,7 @@
       </div>
 
       <div class="toggle">
-        <button class="toggle-btn active">🥗 Régimes + 
+        <button class="toggle-btn active"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#egg-fried') ?>"></use></svg> Régimes + 
           <img src="<?= base_url('assets/images/sport.png') ?>" width="20" height="20" alt="Activité sportive"> Activités sportives</button>
       </div>
 
@@ -42,7 +42,7 @@
 
         <?php if (empty($couples)): ?>
           <div style="text-align: center; padding: 2rem; background: var(--surface); border-radius: 12px;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">😅</div>
+            <div style="font-size: 3rem; margin-bottom: 1rem;"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#emoji-frown') ?>"></use></svg></div>
             <h3>Aucun régime trouvé</h3>
             <p style="color: var(--text-muted);">Impossible de trouver un régime correspondant à vos critères. Veuillez ajuster votre poids cible.</p>
             <a href="/objectif" class="btn btn-primary" style="margin-top: 1rem;">Modifier mon objectif</a>
@@ -62,9 +62,9 @@
                     <div class="regime-info">
                         <div class="regime-name"><?= $regime['nom_regime'] ?? 'Régime sans nom' ?></div>
                         <div class="regime-nutrients">
-                            <span class="nutrient-pill n-viande">🥩 Viande <?= $regime['pourcentage_viande'] ?? '0' ?>%</span>
-                            <span class="nutrient-pill n-poisson">🐟 Poisson <?= $regime['pourcentage_poisson'] ?? '0' ?>%</span>
-                            <span class="nutrient-pill n-volaille">🍗 Volaille <?= $regime['pourcentage_volaille'] ?? '0' ?>%</span>
+                            <span class="nutrient-pill n-viande"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#egg') ?>"></use></svg> Viande <?= $regime['pourcentage_viande'] ?? '0' ?>%</span>
+                            <span class="nutrient-pill n-poisson"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#droplet') ?>"></use></svg> Poisson <?= $regime['pourcentage_poisson'] ?? '0' ?>%</span>
+                            <span class="nutrient-pill n-volaille"><svg class="bi" aria-hidden="true"><use href="<?= base_url('assets/icones/bootstrap-icons.svg#egg-fried') ?>"></use></svg> Volaille <?= $regime['pourcentage_volaille'] ?? '0' ?>%</span>
                         </div>
                         <div class="regime-effect">Effet : <?= $regime['poids_impact_journalier'] ?? '0' ?> kg/jour · Durée recommandée : <?= $couple['duree_jours'] ?? '0' ?> jours</div>
                     </div>

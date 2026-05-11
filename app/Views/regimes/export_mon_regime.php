@@ -45,7 +45,7 @@
   <div class="sheet">
     <div class="header">
       <div>
-        <div class="brand">NutriPath</div>
+        <div class="brand">IT-enForme</div>
         <div style="color:#64748b;font-size:14px;margin-top:4px;">Export détaillé de votre régime actif</div>
       </div>
       <div class="meta">
@@ -100,7 +100,7 @@
     </div>
 
     <div class="footer">
-      <div>Document généré automatiquement par NutriPath.</div>
+      <div>Document généré automatiquement par IT-enForme.</div>
       <div class="actions">
         <button class="btn print" onclick="window.print()">Imprimer / Enregistrer en PDF</button>
         <button class="btn close" onclick="window.close()">Fermer</button>
