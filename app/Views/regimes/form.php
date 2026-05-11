@@ -21,26 +21,26 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="viande">Viande (%)</label>
-                                    <input type="number" class="form-control" id="viande" name="viande" min="0" value="<?= isset($regime['pourcentage_viande']) ? $regime['pourcentage_viande'] : '' ?>" required>
+                                    <input type="number" class="form-control" id="viande" name="viande" min="0" value="<?= isset($regime['pourcentage_viande']) ? $regime['pourcentage_viande'] : '' ?>" step="any" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="volaille">Volaille (%)</label>
-                                    <input type="number" class="form-control" id="volaille" name="volaille" min="0" value="<?= isset($regime['pourcentage_volaille']) ? $regime['pourcentage_volaille'] : '' ?>" required>
+                                    <input type="number" class="form-control" id="volaille" name="volaille" min="0" value="<?= isset($regime['pourcentage_volaille']) ? $regime['pourcentage_volaille'] : '' ?>" step="any" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="poisson">Poisson (%)</label>
-                                    <input type="number" class="form-control" id="poisson" name="poisson" min="0" value="<?= isset($regime['pourcentage_poisson']) ? $regime['pourcentage_poisson'] : '' ?>" required>
+                                    <input type="number" class="form-control" id="poisson" name="poisson" min="0" value="<?= isset($regime['pourcentage_poisson']) ? $regime['pourcentage_poisson'] : '' ?>" step="any" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="poids_impact_journalier">Poids d'impact journalier</label>
-                                    <input type="number" class="form-control" id="poids_impact_journalier" name="poids_impact_journalier" value="<?= isset($regime['poids_impact_journalier']) ? $regime['poids_impact_journalier'] : '' ?>" required>
+                                    <input type="number" class="form-control" id="poids_impact_journalier" name="poids_impact_journalier" value="<?= isset($regime['poids_impact_journalier']) ? $regime['poids_impact_journalier'] : '' ?>" step="any" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="prix_journalier">Prix journalier</label>
-                                    <input type="number" class="form-control" id="prix_journalier" name="prix_journalier" min="0" value="<?= isset($regime['prix_journalier']) ? $regime['prix_journalier'] : '' ?>" required>
+                                    <CodesModel class="form-control" id="prix_journalier" name="prix_journalier" min="0" value="<?= isset($regime['prix_journalier']) ? $regime['prix_journalier'] : '' ?>" step="any" required>
                                 </div>
                             </div>
 

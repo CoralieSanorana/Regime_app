@@ -149,14 +149,14 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Poids actuel (kg)</label>
-                        <input type="number" name="poids_actuel" placeholder="70" value="<?= old('poids_actuel') ?>">
+                        <input type="number" name="poids_actuel" placeholder="70" value="<?= old('poids_actuel') ?>" step="any">
                         <?php if (isset($validation['poids_actuel'])): ?>
                             <div class="error-message"><span>⚠️</span> <?= $validation['poids_actuel'] ?></div>
                         <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label>Taille (cm)</label>
-                        <input type="number" name="taille" placeholder="175" value="<?= old('taille') ?>">
+                        <input type="number" name="taille" placeholder="175" value="<?= old('taille') ?>" step="any">
                         <?php if (isset($validation['taille'])): ?>
                             <div class="error-message"><span>⚠️</span> <?= $validation['taille'] ?></div>
                         <?php endif; ?>

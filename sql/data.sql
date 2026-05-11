@@ -16,8 +16,8 @@ INSERT INTO regimes (nom_regime, pourcentage_viande, pourcentage_poisson, pource
 ('Maintien Vital', 33, 33, 34, 0.100, 6000);    
 
 -- Activités Sportives
-INSERT INTO activites_sportives (nom_activite) VALUES 
-('Natation'), ('Course à pied'), ('Musculation'), ('Yoga'), ('Cyclisme');
+INSERT INTO activites_sportives (nom_activite,effet_jour,description) VALUES 
+('Natation',-0.01,'1 heure par jour'), ('Course à pied',-0.1,'30 minute par jour'), ('Musculation',0.01,'30 minute par jour'), ('Yoga',0.002,'15 minute par jour'), ('Cyclisme',-0.002,'1 heure par jour');
 
 -- Codes Porte-monnaie
 INSERT INTO codes_porte_monnaie (code_secret, montant) VALUES 

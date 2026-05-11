@@ -61,7 +61,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
           <div class="form-group">
             <label>Poids actuel (kg)</label>
-            <input type="number" id="poids-actuel-display" value="<?= $poids_actuel ?>" readonly style="opacity: 0.6;"> 
+            <input type="number" id="poids-actuel-display" value="<?= $poids_actuel ?>" readonly style="opacity: 0.6;" step="any"> 
           </div>
           <div class="form-group">
             <label>Poids cible (kg)</label>

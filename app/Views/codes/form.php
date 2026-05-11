@@ -13,7 +13,7 @@
                         </div>
                         <div class="form-group">
                             <label for="montant">Montant de la recharge (Ar)</label>
-                            <input type="number" class="form-control" id="montant" name="montant" min="0" step="0.01" value="<?= isset($code['montant']) ? $code['montant'] : '' ?>" required>
+                            <input type="number" class="form-control" id="montant" name="montant" min="0" step="0.01" value="<?= isset($code['montant']) ? $code['montant'] : '' ?>" step="any" required>
                         </div>
                         <div class="form-group">
                             <label for="est_valide">Est valide</label>
