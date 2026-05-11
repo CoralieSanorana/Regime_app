@@ -16,7 +16,7 @@ class Inscription extends BaseController
     public function save() 
     {
         $model = new UserModel();
-        $userDetailsModel = new UserDetailModel();
+        $UserDetailModel = new UserDetailModel();
 
         $data = $this->request->getPost();
         
@@ -41,12 +41,12 @@ class Inscription extends BaseController
         ];
 
         
-        if (!$userDetailsModel->insert($detailsData)) {
+        if (!$UserDetailModel->insert($detailsData)) {
             
             $model->delete($userId); // Supprimer l'utilisateur créé pour éviter les données orphelines
             return redirect()->back()
                             ->withInput()
-                            ->with('validation', $userDetailsModel->errors());
+                            ->with('validation', $UserDetailModel->errors());
         }
 
         return redirect()->to('/')->with('success', 'Votre compte NutriPath est prêt !');

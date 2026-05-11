@@ -1,11 +1,11 @@
 <?php
 namespace App\Controllers;
-use App\Models\UsersModel;
+use App\Models\UserModel;
 class Users extends BaseController
 {
     public function index()
     {
-        $model = new UsersModel();
+        $model = new UserModel();
         $data['Users'] = $model->findAll();
         return view('Users/index', $data);
     }

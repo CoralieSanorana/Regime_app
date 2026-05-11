@@ -53,36 +53,40 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Poids actuel (kg)</label>
-                                    <input type="number" name="poids_actuel" id="poids-input" value="<?= $profil['poids'] ?>">
+                                    <input type="number" name="poids_actuel" id="poids-input" value="<?= $profil['poids'] ?>" step="any">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Taille (cm)</label>
-                                <input type="number" name="taille" id="taille-input" value="<?= $profil['taille'] ?>">
+                                <input type="number" name="taille" id="taille-input" value="<?= $profil['taille'] ?>" step="any">
                             </div>
                             <input type="hidden" name="details_id" value="<?= $profil['details_id'] ?>">
                             <input type="hidden" name="id" value="<?= $profil['id'] ?>">
                             <input type="submit" class="btn btn-primary btn-sm" value="💾 Update">
-                            <button type="button" id="imc-btn" class="btn btn-outline btn-sm" onclick="calculerIMC()" >🔄 Recalculer l'IMC</button>
                         </form>
                     </div>
 
-                    <div class="imc-display">
-                        <div class="imc-ring">
-                            <svg id="imc-ring-svg" width="120" height="120">
-                                <circle cx="60" cy="60" r="50" fill="none" stroke="#1f2b23" stroke-width="10"/>
-                                <circle id="imc-ring-progress" cx="60" cy="60" r="50" fill="none" stroke="#4ade80" stroke-width="10"
-                                stroke-dasharray="220 314" stroke-linecap="round"/>
-                            </svg>
-                            <div class="imc-value-wrap">
-                                <div class="imc-number" id="imc-value">22.9</div>
-                                <div class="imc-unit">IMC</div>
+                    <div class="imc-display" style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem;">
+                        <div style="display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center;">
+                            <!-- Cercle IMC -->
+                            <div style="position: relative; width: 140px; height: 140px; flex-shrink: 0;">
+                                <svg id="imc-ring-svg" width="140" height="140" viewBox="0 0 140 140" style="filter: drop-shadow(0 0 15px rgba(74, 222, 128, 0.3)); position: absolute; top: 0; left: 0;">
+                                    <circle cx="70" cy="70" r="60" fill="none" stroke="#1f2b23" stroke-width="12"/>
+                                    <circle id="imc-ring-progress" cx="70" cy="70" r="60" fill="none" stroke="#4ade80" stroke-width="12"
+                                    stroke-dasharray="260 376.99" stroke-linecap="round" stroke-dashoffset="0"/>
+                                </svg>
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                                    <div class="imc-number" id="imc-value" style="font-size: 2.5rem; font-weight: 700; line-height: 1; color: #4ade80;">22.9</div>
+                                    <div class="imc-unit" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">IMC</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="imc-info">
-                            <h3 id="imc-category">Poids Normal</h3>
-                            <div class="imc-status" id="imc-status">✓ IMC Sain</div>
-                            <div id="imc-description" style="font-size:0.82rem;color:var(--text-muted);">IMC idéal : 18.5 – 24.9<br>Votre IMC est dans la zone saine.</div>
+                            
+                            <!-- Infos IMC -->
+                            <div class="imc-info">
+                                <h3 id="imc-category" style="margin: 0 0 8px 0; font-size: 1.2rem; color: white;">Poids Normal</h3>
+                                <div class="imc-status" id="imc-status" style="font-size: 0.92rem; margin-bottom: 8px; color: #4ade80;">✓ IMC Sain</div>
+                                <div id="imc-description" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">IMC idéal : 18.5 – 24.9<br>Votre IMC est dans la zone saine.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,97 +119,6 @@
     
     <?= view('footer') ?>
     
-    <script>
-        function navigate(page, el) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(function(currentPage) {
-                currentPage.classList.remove('active');
-            });
-
-            const targetPage = document.getElementById('pg-' + page);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-
-            document.querySelectorAll('.nav-item').forEach(function(item) {
-                item.classList.remove('active');
-            });
-
-            if (el) {
-                el.classList.add('active');
-            }
-        }
-
-        function calculerIMC() {
-            // Récupérer les valeurs des champs
-            const poids = parseFloat(document.getElementById('poids-input').value);
-            const taille = parseFloat(document.getElementById('taille-input').value);
-
-            // Vérifier que les valeurs sont valides
-            if (!poids || !taille || poids <= 0 || taille <= 0) {
-                alert('Veuillez entrer des valeurs valides pour le poids et la taille');
-                return;
-            }
-
-            // Calculer l'IMC
-            const tailleEnMetres = taille / 100;
-            const imc = poids / (tailleEnMetres * tailleEnMetres);
-
-            // Déterminer la catégorie et les infos
-            let category = '';
-            let status = '';
-            let description = '';
-            let strokeColor = '#4ade80'; // Vert par défaut
-
-            if (imc < 18.5) {
-                category = 'Poids insuffisant';
-                status = '⚠️ IMC Bas';
-                description = 'IMC idéal : 18.5 – 24.9<br>Votre IMC est en dessous du poids normal.';
-                strokeColor = '#3b82f6'; // Bleu
-            } else if (imc >= 18.5 && imc < 25) {
-                category = 'Poids Normal';
-                status = '✓ IMC Sain';
-                description = 'IMC idéal : 18.5 – 24.9<br>Votre IMC est dans la zone saine.';
-                strokeColor = '#4ade80'; // Vert
-            } else if (imc >= 25 && imc < 30) {
-                category = 'Surpoids';
-                status = '⚠️ IMC Élevé';
-                description = 'IMC idéal : 18.5 – 24.9<br>Votre IMC est au-dessus du poids normal.';
-                strokeColor = '#fbbf24'; // Orange
-            } else {
-                category = 'Obésité';
-                status = '❌ IMC Critique';
-                description = 'IMC idéal : 18.5 – 24.9<br>Votre IMC est au-dessus des normes saines.';
-                strokeColor = '#ef4444'; // Rouge
-            }
-
-            // Mettre à jour l'affichage du nombre IMC
-            document.getElementById('imc-value').textContent = imc.toFixed(1);
-
-            // Mettre à jour la catégorie
-            document.getElementById('imc-category').textContent = category;
-
-            // Mettre à jour le statut
-            document.getElementById('imc-status').textContent = status;
-
-            // Mettre à jour la description
-            document.getElementById('imc-description').innerHTML = description;
-
-            // Mettre à jour la couleur de la bague (cercle de progression)
-            const progressCircle = document.getElementById('imc-ring-progress');
-            if (progressCircle) {
-                progressCircle.setAttribute('stroke', strokeColor);
-            }
-        }
-
-        // Initialiser l'IMC au chargement de la page avec les valeurs initiales
-        window.addEventListener('DOMContentLoaded', function() {
-            const appShell = document.getElementById('app-shell');
-            if (appShell) {
-                appShell.style.display = 'flex';
-            }
-            calculerIMC();
-        });
-    </script>
+    <script src="<?= base_url('assets/js/profil.js') ?>"></script>
 </body>
 </html>

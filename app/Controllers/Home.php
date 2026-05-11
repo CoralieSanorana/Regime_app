@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\UsersModel;
-use App\Models\UserDetailsModel;
+use App\Models\UserModel;
+use App\Models\UserDetailModel;
 
 class Home extends BaseController
 {
@@ -12,7 +12,7 @@ class Home extends BaseController
     public function login(){
         $email = $this->request->getPost('email');
         $mot_de_passe = $this->request->getPost('mot_de_passe');
-        $userModel = new UsersModel();
+        $userModel = new UserModel();
         $user = $userModel->where('email', $email)->first();    
         if($user && $user['mot_de_passe'] === $mot_de_passe){
             // Use CI session helper for consistent session handling
@@ -42,133 +42,8 @@ class Home extends BaseController
         return redirect()->to('/')->with('success', 'Déconnexion réussie.');
     }
 
-    public function profil(){
-        $userModel = new UsersModel();
-        $userDetailsModel = new UserDetailsModel();
-        $user_id = session()->get('user_id');
-        $user = $userModel->find($user_id);
-        if (!$user) {
-            return redirect()->to('/')->with('error', 'Utilisateur introuvable.');
-        }
-
-        $session = session();
-        $session->set([
-            'user_id' => $user['id'],
-            'user_role' => $user['role'],
-            'user_nom' => $user['nom'],
-            'user_prenom' => $user['prenom'],
-            'user_email' => $user['email'],
-            'user_solde' => $user['solde_monnaie'],
-            'user_gold' => $user['is_gold'],
-        ]);
-
-        $user_details = $userDetailsModel->where(['user_id' => $user_id])->first();
-        if (empty($user_details) || !is_array($user_details)) {
-            $user_details = [
-                'id' => null,
-                'poids_actuel' => 0,
-                'taille' => 0,
-            ];
-        }
-        $profil = [
-            'id' => $user['id'],
-            'nom' => $user['nom'],
-            'prenom' => $user['prenom'],
-            'date_naissance' => $user['date_naissance'],
-            'email' => $user['email'],
-            'mot_de_passe' => $user['mot_de_passe'],
-            'adresse' => $user['adresse'],
-            'genre' => $user['genre'],
-            'role' => $user['role'],
-            'created_at' => $user['created_at'],
-            'is_gold' => $user['is_gold'],
-            'solde_monnaie' => $user['solde_monnaie'],
-            'details_id' => $user_details['id'],
-            // Provide both 'poids_actuel' (DB field) and 'poids' (view expects this)
-            'poids_actuel' => isset($user_details['poids_actuel']) ? $user_details['poids_actuel'] : 0,
-            'poids' => isset($user_details['poids_actuel']) ? $user_details['poids_actuel'] : 0,
-            'taille' => isset($user_details['taille']) ? $user_details['taille'] : 0
-        ];
-
-        return view('users/profil', ['profil' => $profil]);
-    }
-
-    public function updatePwd(){
-        $userModel = new UsersModel();
-        $user_id = $this->request->getPost('id');
-        $new_password = $this->request->getPost('new_password');
-        $old_password = $this->request->getPost('old_password');
-
-        if($new_password != $old_password){
-            $userModel->update($user_id, ['mot_de_passe' => $new_password]);
-            return redirect()->back()->with('success', 'Mot de passe mis à jour avec succès.');
-        } else {
-            return redirect()->back()->with('error', 'Error: Le nouveau mot de passe est identique à l\'ancien.');
-        }
-    }
-
-    public function updateUser(){
-        $userModel = new UsersModel();
-        $session = session();
-
-        $user_id = $this->request->getPost('id');
-        $nom = $this->request->getPost('nom');
-        $prenom = $this->request->getPost('prenom');
-        $date_naissance = $this->request->getPost('date_naissance');
-        $email = $this->request->getPost('email');
-        $adresse = $this->request->getPost('adresse');
-        $genre = $this->request->getPost('genre');
-
-        // Update user info
-        $userModel->update($user_id, [
-            'nom' => $nom,
-            'prenom' => $prenom,
-            'date_naissance' => $date_naissance,
-            'email' => $email,
-            'adresse' => $adresse,
-            'genre' => $genre
-        ]);
-
-        $this->freshUser($user_id);
-        return redirect()->back()->with('success', 'Profil mis à jour avec succès.');
-    }
-
-    public function updateUserDetails(){
-        $userDetailsModel = new UserDetailsModel();
-        $userModel = new UsersModel();
-        $session = session();
-
-        $user_id = $this->request->getPost('id');
-        $details_id = $this->request->getPost('details_id');
-        $poids_actuel = $this->request->getPost('poids_actuel');
-        $taille = $this->request->getPost('taille');
-        $genre = $this->request->getPost('genre');
-
-        if($details_id){
-            $userDetailsModel->update($details_id, [
-                'poids_actuel' => $poids_actuel,
-                'taille' => $taille
-            ]);
-            $userModel->update($user_id, [
-                'genre' => $genre
-            ]);
-        } else {
-            $userDetailsModel->insert([
-                'user_id' => $user_id,
-                'poids_actuel' => $poids_actuel,
-                'taille' => $taille
-            ]);
-            $userModel->update($user_id, [
-                'genre' => $genre
-            ]);
-        }
-
-        $this->freshUser($user_id);
-        return redirect()->back()->with('success', 'Détails du profil mis à jour avec succès.');
-    }
-
     public function freshUser($user_id){
-        $userModel = new UsersModel();
+        $userModel = new UserModel();
         $session = session();
 
         $freshUser = $userModel->find($user_id);
@@ -183,59 +58,6 @@ class Home extends BaseController
                 'user_gold' => $freshUser['is_gold'],
             ]);
         }
-    }
-
-    public function objectif($user_id){
-        $userModel = new UsersModel();
-        $userDetailsModel = new UserDetailsModel();
-        $user = $userModel->find($user_id);
-
-        if (!$user) {
-            return redirect()->to('/')->with('error', 'Utilisateur introuvable.');
-        }
-
-        $session = session();
-        $session->set([
-            'user_id' => $user['id'],
-            'user_role' => $user['role'],
-            'user_nom' => $user['nom'],
-            'user_prenom' => $user['prenom'],
-            'user_email' => $user['email'],
-            'user_solde' => $user['solde_monnaie'],
-            'user_gold' => $user['is_gold'],
-        ]);
-
-        $userDetails = $userDetailsModel->where('user_id', $user_id)->first();
-        $currentWeight = $userDetails['poids_actuel'] ?? null;
-
-        return view('regimes/objectif', [
-            'user' => $user,
-            'currentWeight' => $currentWeight,
-        ]);
-    }
-
-    public function gold($user_id){
-        $userModel = new UsersModel();
-        $user = $userModel->find($user_id);
-
-        if (!$user) {
-            return redirect()->to('/')->with('error', 'Utilisateur introuvable.');
-        }
-
-        $session = session();
-        $session->set([
-            'user_id' => $user['id'],
-            'user_role' => $user['role'],
-            'user_nom' => $user['nom'],
-            'user_prenom' => $user['prenom'],
-            'user_email' => $user['email'],
-            'user_solde' => $user['solde_monnaie'],
-            'user_gold' => $user['is_gold'],
-        ]);
-
-        return view('users/gold', [
-            'user' => $user,
-        ]);
     }
 
     public function dashboard(){
@@ -255,7 +77,7 @@ class Home extends BaseController
 
         $currentUser = null;
         if ($userId) {
-            $currentUser = (new UsersModel())->find($userId);
+            $currentUser = (new UserModel())->find($userId);
         }
 
         $totalUsers = (int) $db->table('users')->countAllResults();
@@ -273,29 +95,79 @@ class Home extends BaseController
             'ideal' => 0,
         ];
 
-        $achats = $db->table('achats_programmes')
-            ->select('poids_depart, poids_objectif')
+        // Récupérer les achats
+        $achats = $db->table('achats_programmes ap')
+            ->select('ap.user_id, ap.poids_depart, ap.poids_objectif')
             ->get()
             ->getResultArray();
 
-        foreach ($achats as $achat) {
-            $poidsDepart = (float) ($achat['poids_depart'] ?? 0);
-            $poidsObjectif = (float) ($achat['poids_objectif'] ?? 0);
+        // Récupérer le dernier objectif choisi pour chaque utilisateur
+        $userObjectives = $db->table('user_objectifs uo')
+            ->select('uo.user_id, uo.objectif_id')
+            ->join('objectifs o', 'o.id = uo.objectif_id', 'left')
+            ->orderBy('uo.date_selection', 'DESC')
+            ->get()
+            ->getResultArray();
 
-            if ($poidsObjectif < $poidsDepart) {
-                $objectiveCounts['reduce']++;
-            } elseif ($poidsObjectif > $poidsDepart) {
-                $objectiveCounts['increase']++;
-            } else {
-                $objectiveCounts['ideal']++;
+        // Créer une map du dernier objectif par utilisateur
+        $userLastObjective = [];
+        foreach ($userObjectives as $uo) {
+            if (!isset($userLastObjective[$uo['user_id']])) {
+                $userLastObjective[$uo['user_id']] = $uo['objectif_id'];
             }
         }
 
-        $objectiveChart = [
-            ['label' => 'Réduire le poids', 'value' => $objectiveCounts['reduce'], 'color' => '#4ade80'],
-            ['label' => 'Augmenter le poids', 'value' => $objectiveCounts['increase'], 'color' => '#60a5fa'],
-            ['label' => 'IMC idéal', 'value' => $objectiveCounts['ideal'], 'color' => '#f59e0b'],
+        // Récupérer les libellés des objectifs
+        $objectifs = $db->table('objectifs')
+            ->select('id, libelle')
+            ->get()
+            ->getResultArray();
+        
+        $objectiveLabels = [];
+        foreach ($objectifs as $obj) {
+            $objectiveLabels[$obj['id']] = $obj['libelle'];
+        }
+
+        // Compter les objectifs pour chaque achat
+        $objectiveCountMap = [];
+        foreach ($achats as $achat) {
+            $userId = (int) $achat['user_id'];
+            
+            // Si l'utilisateur a choisi un objectif, l'utiliser
+            if (isset($userLastObjective[$userId])) {
+                $objectiveId = $userLastObjective[$userId];
+                $label = $objectiveLabels[$objectiveId] ?? 'Perdre du Poids';
+                $objectiveCountMap[$label] = ($objectiveCountMap[$label] ?? 0) + 1;
+            } else {
+                // Sinon, déterminer par la comparaison des poids
+                $poidsDepart = (float) ($achat['poids_depart'] ?? 0);
+                $poidsObjectif = (float) ($achat['poids_objectif'] ?? 0);
+
+                if ($poidsObjectif < $poidsDepart) {
+                    $objectiveCountMap['Perdre du Poids'] = ($objectiveCountMap['Perdre du Poids'] ?? 0) + 1;
+                } elseif ($poidsObjectif > $poidsDepart) {
+                    $objectiveCountMap['Augmenter son Poids'] = ($objectiveCountMap['Augmenter son Poids'] ?? 0) + 1;
+                } else {
+                    $objectiveCountMap['Atteindre l\'IMC idéal'] = ($objectiveCountMap['Atteindre l\'IMC idéal'] ?? 0) + 1;
+                }
+            }
+        }
+
+        // Préparer les données pour le graphique avec les couleurs appropriées
+        $colorMap = [
+            'Perdre du Poids' => '#4ade80',
+            'Augmenter son Poids' => '#60a5fa',
+            'Atteindre l\'IMC idéal' => '#f59e0b',
         ];
+
+        $objectiveChart = [];
+        foreach ($objectiveLabels as $id => $label) {
+            $objectiveChart[] = [
+                'label' => $label,
+                'value' => $objectiveCountMap[$label] ?? 0,
+                'color' => $colorMap[$label] ?? '#9ca3af',
+            ];
+        }
 
         $pieSegments = [];
         $pieOffset = 0;

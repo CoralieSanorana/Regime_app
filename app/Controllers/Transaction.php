@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use App\Models\UsersModel;
+use App\Models\UserModel;
 use App\Models\CodeModel;
 use App\Models\TransactionModel;
 class Transaction extends BaseController
@@ -15,7 +15,7 @@ class Transaction extends BaseController
     public function findOne()
     {
         $user_id = session()->get('user_id');
-        $userModel = new UsersModel();
+        $userModel = new UserModel();
         $model = new TransactionModel();
         $user = $userModel->find($user_id);
 
@@ -50,7 +50,7 @@ class Transaction extends BaseController
     }
 
     public function recharger(){
-        $userModel = new UsersModel();
+        $userModel = new UserModel();
         $transactionModel = new TransactionModel();
         $codeModel = new CodeModel();
 

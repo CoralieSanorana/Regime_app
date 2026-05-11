@@ -63,11 +63,4 @@
 
       <?= view('footer') ?>
 
-      <script>
-          window.addEventListener('DOMContentLoaded', function () {
-            const topbarTitle = document.getElementById('topbar-title');
-            if (topbarTitle) {
-              topbarTitle.textContent = 'Porte-monnaie';
-            }
-          });
-      </script>
+      <script src="<?= base_url('assets/js/porte_monnaie.js') ?>"></script>

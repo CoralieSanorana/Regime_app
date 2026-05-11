@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\UserDetailModel;
 
 class User extends BaseController
 {
@@ -15,6 +16,97 @@ class User extends BaseController
         $data['users'] = $model->findAll();
 
         return view('users/index', $data);
+    }
+
+    public function profil(){
+        $userModel = new UserModel();
+        $UserDetailModel = new UserDetailModel();
+        $user_id = session()->get('user_id');
+        $user = $userModel->find($user_id);
+        if (!$user) {
+            return redirect()->to('/')->with('error', 'Utilisateur introuvable.');
+        }
+
+        $session = session();
+        $session->set([
+            'user_id' => $user['id'],
+            'user_role' => $user['role'],
+            'user_nom' => $user['nom'],
+            'user_prenom' => $user['prenom'],
+            'user_email' => $user['email'],
+            'user_solde' => $user['solde_monnaie'],
+            'user_gold' => $user['is_gold'],
+        ]);
+
+        $user_details = $UserDetailModel->where(['user_id' => $user_id])->first();
+        if (empty($user_details) || !is_array($user_details)) {
+            $user_details = [
+                'id' => null,
+                'poids_actuel' => 0,
+                'taille' => 0,
+            ];
+        }
+        $profil = [
+            'id' => $user['id'],
+            'nom' => $user['nom'],
+            'prenom' => $user['prenom'],
+            'date_naissance' => $user['date_naissance'],
+            'email' => $user['email'],
+            'mot_de_passe' => $user['mot_de_passe'],
+            'adresse' => $user['adresse'],
+            'genre' => $user['genre'],
+            'role' => $user['role'],
+            'created_at' => $user['created_at'],
+            'is_gold' => $user['is_gold'],
+            'solde_monnaie' => $user['solde_monnaie'],
+            'details_id' => $user_details['id'],
+            // Provide both 'poids_actuel' (DB field) and 'poids' (view expects this)
+            'poids_actuel' => isset($user_details['poids_actuel']) ? $user_details['poids_actuel'] : 0,
+            'poids' => isset($user_details['poids_actuel']) ? $user_details['poids_actuel'] : 0,
+            'taille' => isset($user_details['taille']) ? $user_details['taille'] : 0
+        ];
+
+        return view('users/profil', ['profil' => $profil]);
+    }
+
+    public function updatePwd(){
+        $userModel = new UserModel();
+        $user_id = $this->request->getPost('id');
+        $new_password = $this->request->getPost('new_password');
+        $old_password = $this->request->getPost('old_password');
+
+        if($new_password != $old_password){
+            $userModel->update($user_id, ['mot_de_passe' => $new_password]);
+            return redirect()->back()->with('success', 'Mot de passe mis à jour avec succès.');
+        } else {
+            return redirect()->back()->with('error', 'Error: Le nouveau mot de passe est identique à l\'ancien.');
+        }
+    }
+
+    public function updateUser(){
+        $userModel = new UserModel();
+        $session = session();
+
+        $user_id = $this->request->getPost('id');
+        $nom = $this->request->getPost('nom');
+        $prenom = $this->request->getPost('prenom');
+        $date_naissance = $this->request->getPost('date_naissance');
+        $email = $this->request->getPost('email');
+        $adresse = $this->request->getPost('adresse');
+        $genre = $this->request->getPost('genre');
+
+        // Update user info
+        $userModel->update($user_id, [
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'date_naissance' => $date_naissance,
+            'email' => $email,
+            'adresse' => $adresse,
+            'genre' => $genre
+        ]);
+
+        $this->freshUser($user_id);
+        return redirect()->back()->with('success', 'Profil mis à jour avec succès.');
     }
 
     /**

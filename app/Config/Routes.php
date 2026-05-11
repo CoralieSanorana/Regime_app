@@ -12,10 +12,10 @@ $routes->get('/logout', 'Home::logout');
 $routes->post('/singIn', 'Home::login');
 
 // profil et mise à jour
-$routes->get('/profil', 'Home::profil');
-$routes->post('/user/update','Home::updateUser');
-$routes->post('/user/update/pwd','Home::updatePwd');
-$routes->post('/userDetails/update','Home::updateUserDetails');
+$routes->get('/profil', 'User::profil');
+$routes->post('/user/update','User::updateUser');
+$routes->post('/user/update/pwd','User::updatePwd');
+$routes->post('/userDetails/update','User::updateUserDetails');
 
 // porte monnaie
 $routes->get('/porte_monnaie', 'Transaction::findOne');
@@ -55,7 +55,6 @@ $routes->post('/codes/update/(:num)', 'Code::updateCode/$1');
 
 $routes->get('/inscription', 'Inscription::index');
 $routes->post('/inscription/save','Inscription::save');
-$routes->get('/main', 'Home::main');
 $routes->get('/objectif', 'Objectif::index');
 $routes->post('/regime/save', 'Objectif::save');
 $routes->get('/gold', 'Gold::index');

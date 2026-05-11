@@ -8,23 +8,26 @@
       </div>
 
       <!-- Affichage du poids actuel et IMC -->
-      <div class="card" style="background: linear-gradient(135deg, var(--accent), var(--success)); color: white; margin-bottom: 2rem;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 1.5rem;">
-          <div>
-            <div style="font-size: 0.9rem; opacity: 0.9;">Poids actuel</div>
-            <div style="font-size: 2.5rem; font-weight: 700;"><?= $poids_actuel ?> <span style="font-size: 1.2rem;">kg</span></div>
-          </div>
-          <div>
-            <div style="font-size: 0.9rem; opacity: 0.9;">IMC (Indice de Masse Corporelle)</div>
-            <div style="font-size: 2.5rem; font-weight: 700;"><?= $imc ?> <span style="font-size: 1.2rem;">kg/m²</span></div>
-            <div style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.85;">
-              <?php 
-                if ($imc < 18.5) echo "Insuffisance pondérale";
-                elseif ($imc < 25) echo "Poids normal";
-                elseif ($imc < 30) echo "Surpoids";
-                else echo "Obésité";
-              ?>
+      <div class="card" style="background: var(--surface); padding: 1.5rem; margin-bottom: 2rem;">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center;">
+          <!-- Cercle IMC -->
+          <div style="position: relative; width: 140px; height: 140px; flex-shrink: 0;">
+            <svg id="imc-ring-objectif" width="140" height="140" viewBox="0 0 140 140" style="filter: drop-shadow(0 0 15px rgba(74, 222, 128, 0.3)); position: absolute; top: 0; left: 0;">
+              <circle cx="70" cy="70" r="60" fill="none" stroke="#1f2b23" stroke-width="12"/>
+              <circle id="imc-ring-progress-objectif" cx="70" cy="70" r="60" fill="none" stroke="#4ade80" stroke-width="12"
+              stroke-dasharray="260 376.99" stroke-linecap="round" stroke-dashoffset="0"/>
+            </svg>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+              <div id="imc-value-objectif" style="font-size: 2.5rem; font-weight: 700; line-height: 1; color: #4ade80;"><?= $imc ?></div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">IMC</div>
             </div>
+          </div>
+          
+          <!-- Infos IMC -->
+          <div>
+            <h3 id="imc-category-objectif" style="margin: 0 0 8px 0; font-size: 1.2rem; color: white;">Poids normal</h3>
+            <div id="imc-status-objectif" style="font-size: 0.92rem; margin-bottom: 8px; color: #4ade80;">✓ IMC Sain</div>
+            <div id="imc-description-objectif" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">IMC idéal : 18.5 – 24.9<br>Votre IMC est dans la zone saine.</div>
           </div>
         </div>
       </div>
@@ -62,7 +65,7 @@
           </div>
           <div class="form-group">
             <label>Poids cible (kg)</label>
-            <input type="number" id="poids-cible" placeholder="Saisir le poids cible" style="border-color: var(--border);">
+            <input type="number" id="poids-cible" placeholder="Saisir le poids cible" style="border-color: var(--border);" step="any">
             <div id="poids-cible-error" style="color: #f87171; font-size: 0.85rem; margin-top: 0.5rem; display: none;"></div>
           </div>
         </div>
@@ -89,234 +92,24 @@
       <?= view('footer') ?>
     </div>
 
-<div id="toast" class="toast">
-    <span id="toast-msg"></span>
-</div>
+    <div id="toast" class="toast">
+        <span id="toast-msg"></span>
+    </div>
 
-<script>
-  const BASE_URL = "<?= base_url(); ?>";
-  const POIDS_ACTUEL = <?= $poids_actuel ?>;
-  const TAILLE = <?= $taille ?>;
-  const POIDS_IDEAL = <?= $poids_ideal ?>;
-  const IMC = <?= $imc ?>;
+    <script>
+      window.NUTRIPATH_BASE_URL = "<?= base_url(); ?>";
+      window.NUTRIPATH_OBJECTIF = {
+        poidsActuel: <?= (float) $poids_actuel ?>,
+        poidsIdeal: <?= (float) $poids_ideal ?>,
+        taille: <?= (float) $taille ?>,
+        imc: <?= (float) $imc ?>
+      };
+      window.NUTRIPATH_CSRF = {
+        name: "<?= csrf_token() ?>",
+        hash: "<?= csrf_hash() ?>"
+      };
+    </script>
+    <script src="<?= base_url('assets/js/objectif.js') ?>"></script>
 
-  let objectifChoisi = null;
-  let poidsChoisi = null;
-
-  // ========== SÉLECTION D'OBJECTIF ==========
-  function selectObjectif(element, objectif) {
-    console.log('selectObjectif appelée avec:', objectif);
-    
-    objectifChoisi = objectif;
-    poidsChoisi = null;
-    
-    // Retirer la sélection de toutes les cartes et ajouter à celle-ci
-    document.querySelectorAll('.obj-card').forEach(card => {
-      card.classList.remove('selected');
-    });
-    
-    element.classList.add('selected');
-    console.log('Classe selected ajoutée à:', element);
-
-    // Afficher/masquer les sections selon l'objectif
-    const imcSection = document.getElementById('imc-ideal-section');
-    const poidsInput = document.getElementById('poids-cible');
-    const poidsFormGroup = poidsInput.closest('.form-group');
-
-    if (objectif === 'Atteindre son IMC idéal') {
-      imcSection.style.display = 'block';
-      poidsFormGroup.style.display = 'none';
-    } else {
-      imcSection.style.display = 'none';
-      poidsFormGroup.style.display = 'block';
-      document.getElementById('use-imc-ideal').checked = false;
-      document.getElementById('imc-ideal-info').style.display = 'none';
-      poidsInput.value = '';
-      poidsInput.disabled = false;
-    }
-
-    showNotif(`🎯 Objectif choisi : ${objectif}`);
-    validateAndUpdateResume();
-  }
-
-  // ========== IMC IDÉAL ==========
-  function handleIMCIdeal() {
-    const useIdeal = document.getElementById('use-imc-ideal').checked;
-    const poidsInput = document.getElementById('poids-cible');
-    const infoSection = document.getElementById('imc-ideal-info');
-
-    if (useIdeal) {
-      poidsChoisi = POIDS_IDEAL;
-      poidsInput.value = POIDS_IDEAL;
-      poidsInput.disabled = true;
-      infoSection.style.display = 'block';
-      calculateDifference();
-    } else {
-      poidsInput.disabled = false;
-      poidsInput.value = '';
-      infoSection.style.display = 'none';
-      poidsChoisi = null;
-    }
-    validateAndUpdateResume();
-  }
-
-  // ========== VALIDATION ET RÉSUMÉ ==========
-  function validateAndUpdateResume() {
-    const poidsInput = document.getElementById('poids-cible');
-    const errorDiv = document.getElementById('poids-cible-error');
-    const resumeSection = document.getElementById('resume-section');
-    const useIdeal = document.getElementById('use-imc-ideal').checked;
-
-    if (!objectifChoisi) {
-      resumeSection.style.display = 'none';
-      return;
-    }
-
-    let isValid = false;
-    errorDiv.style.display = 'none';
-    errorDiv.textContent = '';
-
-    // Cas IMC idéal
-    if (objectifChoisi === 'Atteindre son IMC idéal') {
-      poidsChoisi = POIDS_IDEAL;
-      isValid = true;
-    } 
-    // Autres cas
-    else if (poidsInput.value) {
-      const poids = parseFloat(poidsInput.value);
-      poidsChoisi = poids;
-
-      if (objectifChoisi === 'Perdre du Poids') {
-        if (poids < POIDS_ACTUEL) {
-          isValid = true;
-        } else {
-          errorDiv.textContent = '⚠️ Le poids cible doit être inférieur au poids actuel';
-          errorDiv.style.display = 'block';
-        }
-      } else if (objectifChoisi === 'Augmenter son Poids') {
-        if (poids > POIDS_ACTUEL) {
-          isValid = true;
-        } else {
-          errorDiv.textContent = '⚠️ Le poids cible doit être supérieur au poids actuel';
-          errorDiv.style.display = 'block';
-        }
-      }
-    }
-
-    if (isValid && poidsChoisi) {
-      calculateDifference();
-      resumeSection.style.display = 'block';
-      document.getElementById('resume-objectif').textContent = objectifChoisi;
-    } else {
-      resumeSection.style.display = 'none';
-    }
-  }
-
-  // ========== CALCUL DIFFÉRENCE ==========
-  function calculateDifference() {
-    if (!poidsChoisi) return;
-
-    const diff = Math.abs(poidsChoisi - POIDS_ACTUEL);
-    const estimatedDays = Math.ceil(diff / 0.5);
-    const estimatedWeeks = Math.ceil(estimatedDays / 7);
-
-    let diffText = '';
-    if (poidsChoisi < POIDS_ACTUEL) {
-      diffText = `−${diff.toFixed(1)} kg à perdre`;
-    } else {
-      diffText = `+${diff.toFixed(1)} kg à gagner`;
-    }
-
-    document.getElementById('resume-diff').textContent = diffText;
-    document.getElementById('resume-duree').textContent = `~${estimatedWeeks} semaines`;
-    document.getElementById('diff-poids').textContent = diffText;
-  }
-
-  // ========== ÉCOUTEUR POIDS CIBLE ==========
-  document.getElementById('poids-cible').addEventListener('input', function() {
-    console.log('Poids cible saisi:', this.value);
-    validateAndUpdateResume();
-  });
-
-  // ========== TOAST NOTIFICATIONS ==========
-  let toastTimer;
-  function showNotif(msg) {
-    const toast = document.getElementById('toast');
-    const toastMsg = document.getElementById('toast-msg');
-    if (toast && toastMsg) {
-      toastMsg.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
-    }
-  }
-
-  // ========== NAVIGATION VERS SUGGESTIONS ==========
-  function navigateToRegime() {
-    console.log('navigateToRegime appelée');
-    console.log('objectifChoisi:', objectifChoisi);
-    console.log('poidsChoisi:', poidsChoisi);
-
-    if (!objectifChoisi) {
-      alert('⚠️ Veuillez choisir un objectif.');
-      return;
-    }
-
-    if (!poidsChoisi) {
-      alert('⚠️ Veuillez saisir un poids cible.');
-      return;
-    }
-
-    // Préparation des données
-    const formData = new FormData();
-    formData.append('objectif', objectifChoisi);
-    formData.append('poids_cible', poidsChoisi);
-
-    // Ajouter le token CSRF si disponible
-    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') 
-                      || document.querySelector('[name="csrf_token"]')?.value;
-    if (csrfToken) {
-      formData.append('<?= csrf_token() ?>', csrfToken);
-    }
-
-    console.log('Envoi des données...');
-
-    fetch(BASE_URL + 'regime/save', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    })
-    .then(response => {
-      console.log('Réponse reçue, status:', response.status);
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Données JSON reçues:', data);
-      if (data.status === 'success') {
-        showNotif('✅ Objectif enregistré ! Redirection...');
-        setTimeout(() => {
-          window.location.href = BASE_URL + 'regimes/suggestions';
-        }, 500);
-      } else {
-        alert('❌ Erreur : ' + (data.message || 'Erreur inconnue'));
-      }
-    })
-    .catch(error => {
-      console.error('Erreur:', error);
-      alert('❌ Erreur réseau : ' + error.message);
-    });
-  }
-
-  // ========== INITIALISATION ==========
-  window.addEventListener('load', () => {
-    console.log('Page objectif chargée avec succès');
-    console.log('POIDS_ACTUEL:', POIDS_ACTUEL);
-    console.log('IMC:', IMC);
-  });
-</script>
-</script>
+</body>
+</html>

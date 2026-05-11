@@ -7,7 +7,7 @@ use App\Models\AchatModel;
 use App\Models\TransactionModel;
 use App\Models\UserDetailModel;
 use App\Models\UserObjectifModel;
-use App\Models\UsersModel;
+use App\Models\UserModel;
 
 class RegimeController extends BaseController
 {
@@ -111,7 +111,7 @@ class RegimeController extends BaseController
     public function acheterRegime(){
         $regimeModel = new RegimeModel();
         $sportModel = new SportModel();
-        $userModel = new UsersModel();
+        $userModel = new UserModel();
         $userDetailModel = new UserDetailModel();
         $transactionModel = new TransactionModel();
 

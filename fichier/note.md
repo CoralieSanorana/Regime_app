@@ -40,3 +40,4 @@
     - validation du transaction
 
 - option Gold + remise de 15% sur le prix des regimes
+

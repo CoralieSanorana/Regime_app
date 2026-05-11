@@ -63,72 +63,7 @@
 
 <?= view('footer') ?>
 
-<script>
-    // 1. Définition des titres (indispensable pour que titles['gold'] fonctionne)
-    const titles = {
-        dashboard: 'Tableau de bord',
-        profil: 'Mon Profil',
-        objectif: 'Mon Objectif',
-        suggestions: 'Régimes & Activités',
-        monregime: 'Mon Régime Actuel',
-        wallet: 'Porte-monnaie',
-        gold: 'Option Gold ⭐'
-    };
-
-    function navigate(page, el) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        const targetPage = document.getElementById('pg-' + page);
-        if (targetPage) targetPage.classList.add('active');
-
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        if (el) el.classList.add('active');
-
-        const topbarTitle = document.getElementById('topbar-title');
-        if (topbarTitle) topbarTitle.textContent = titles[page] || '';
-    }
-
-    function activateGold() {
-        // Simuler une activation (dans une vraie app, on ferait une requête AJAX ici)
-        const BASE_URL = "<?= base_url(); ?>";
-
-        fetch(BASE_URL + 'gold/activate', {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                window.location.href = BASE_URL + 'gold';
-            } else {
-                alert("Erreur lors de l'enregistrement : " + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Erreur:', error);
-            alert("Une erreur réseau est survenue.");
-        });
-
-
-        showToast('Option Gold activée avec succès !');
-        // Après activation, on pourrait aussi mettre à jour l'interface pour refléter le changement
-    }
-
-    window.addEventListener('load', () => {
-        // 2. Sélection automatique du menu "Option Gold" dans le sidebar
-        // On cherche le lien qui appelle la fonction navigate avec 'gold'
-        const goldNavItem = document.querySelector('.nav-item[onclick*="gold"]');
-        
-        // 3. On exécute la navigation vers gold pour mettre à jour le titre ET le menu
-        navigate('gold', goldNavItem);
-
-        // Animation des barres (si elles existent)
-        const bars = document.querySelectorAll('.chart-bar');
-        bars.forEach((b, i) => {
-            const h = b.style.height;
-            b.style.height = '0';
-            setTimeout(() => b.style.height = h, 200 + i * 60);
-        });
-    });
-</script>
+<script src="<?= base_url('assets/js/gold.js') ?>"></script>
 
 </body>
 </html>
