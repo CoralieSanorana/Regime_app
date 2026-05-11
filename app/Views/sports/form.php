@@ -13,11 +13,11 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea class="form-control" id="description" name="description" rows="3" required><?= isset($sport['description']) ? $sport['description'] : '' ?></textarea>
+                            <textarea class="form-control" id="description" name="description" rows="3"><?= isset($sport['description']) ? $sport['description'] : '' ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="effet_jour">Effet par jour (kg)</label>
-                            <input type="number" class="form-control" id="effet_jour" name="effet_jour" value="<?= isset($sport['effet_jour']) ? $sport['effet_jour'] : '' ?>" required>
+                            <input type="number" class="form-control" id="effet_jour" name="effet_jour" value="<?= isset($sport['effet_jour']) ? $sport['effet_jour'] : '' ?>" step="any" required>
                         </div>
                         <button type="submit" class="btn btn-primary"><?= $isEdit ? 'Modifier le sport' : 'Ajouter le sport' ?></button>
                         <a href="/sports" class="btn btn-outline">Annuler</a>

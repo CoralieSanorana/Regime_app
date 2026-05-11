@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\UserModel;
-use App\Models\CodeModel;
+use App\Models\CodesModel;
 use App\Models\TransactionModel;
 class Transaction extends BaseController
 {
@@ -52,13 +52,13 @@ class Transaction extends BaseController
     public function recharger(){
         $userModel = new UserModel();
         $transactionModel = new TransactionModel();
-        $codeModel = new CodeModel();
+        $CodesModel = new CodesModel();
 
         $user_id = $this->request->getPost('user_id'); 
         $code = $this->request->getPost('code');
         $user = $userModel->find($user_id);
 
-        $codeTrouver = $codeModel->where('code_secret', $code)->first();
+        $codeTrouver = $CodesModel->where('code_secret', $code)->first();
         if (!empty($codeTrouver)) {
             if($codeTrouver['est_valide']){
                 // Update le solde du user
@@ -77,7 +77,7 @@ class Transaction extends BaseController
                 ]);
                 
                 // Update le code pour le marquer comme invalide
-                $codeModel->update($codeTrouver['id'], ['est_valide' => false]);
+                $CodesModel->update($codeTrouver['id'], ['est_valide' => false]);
 
                 return redirect()->back()->with('success', 'Recharge réussie! Votre nouveau solde est de '.$new_solde.' Ar.');
 

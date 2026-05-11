@@ -166,3 +166,39 @@ in APPPATH\Controllers\User.php on line 22.
  4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-11 11:42:48 --> ErrorException: preg_match(): Compilation failed: missing closing parenthesis at offset 22
+[Method: GET, Route: gold]
+in SYSTEMPATH\Router\Router.php on line 463.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match(): Compilation failed: missing closing parenthesis at offset 22', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\system\\Router\\Router.php', 463)
+ 2 SYSTEMPATH\Router\Router.php(463): preg_match('#^codes/delete/([0-9]+$#u', 'gold', [])
+ 3 SYSTEMPATH\Router\Router.php(225): CodeIgniter\Router\Router->checkRoutes('gold')
+ 4 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('gold')
+ 5 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-11 11:43:17 --> ErrorException: preg_match(): Compilation failed: missing closing parenthesis at offset 22
+[Method: GET, Route: gold]
+in SYSTEMPATH\Router\Router.php on line 463.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match(): Compilation failed: missing closing parenthesis at offset 22', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\system\\Router\\Router.php', 463)
+ 2 SYSTEMPATH\Router\Router.php(463): preg_match('#^codes/delete/([0-9]+$#u', 'gold', [])
+ 3 SYSTEMPATH\Router\Router.php(225): CodeIgniter\Router\Router->checkRoutes('gold')
+ 4 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('gold')
+ 5 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-11 11:48:39 --> ErrorException: preg_match(): Compilation failed: missing closing parenthesis at offset 22
+[Method: GET, Route: codes/delete/15]
+in SYSTEMPATH\Router\Router.php on line 463.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'preg_match(): Compilation failed: missing closing parenthesis at offset 22', 'D:\\ITU\\S4\\Systeme d\'information\\2026-05-06\\Regime_app\\system\\Router\\Router.php', 463)
+ 2 SYSTEMPATH\Router\Router.php(463): preg_match('#^codes/delete/([0-9]+$#u', 'codes/delete/15', [])
+ 3 SYSTEMPATH\Router\Router.php(225): CodeIgniter\Router\Router->checkRoutes('codes/delete/15')
+ 4 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('codes/delete/15')
+ 5 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

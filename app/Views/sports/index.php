@@ -1,5 +1,6 @@
 <?php $page = 'Sports'; ?>
-<?= view('header', ['activeMenu' => 'sports']) ?>
+    <?= view('header', ['activeMenu' => 'sports']) ?>
+    
         <div class="page active" id="pg-sports">
             <div class="container mt-5">
                 <div class="card">
@@ -9,21 +10,7 @@
                             <a href="/sports/export-list" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Export PDF</a>
                         </h2>
                     </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <?php if (session()->getFlashdata('succes')): ?>
-                                    <div class="alert alert-success mb-0">
-                                        <?= session()->getFlashdata('succes') ?>
-                                    </div>
-                                <?php endif; ?>
-                                <?php if (session()->getFlashdata('error')): ?>
-                                    <div class="alert alert-danger mb-0">
-                                        <?= session()->getFlashdata('error') ?>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
+
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>

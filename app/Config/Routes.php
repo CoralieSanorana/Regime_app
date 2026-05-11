@@ -51,6 +51,7 @@ $routes->get('/codes/add', 'Code::add');
 $routes->post('/codes/add', 'Code::addCode');
 $routes->get('/codes/edit/(:num)', 'Code::edit/$1');
 $routes->post('/codes/update/(:num)', 'Code::updateCode/$1');
+$routes->get('/codes/delete/(:num)', 'Code::deleteCode/$1');
 
 
 $routes->get('/inscription', 'Inscription::index');
